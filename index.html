@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chandrakota Village – Home & News</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      background: #f4f6f9;
+      color: #1e2b37;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+    a { color: #2a7faa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ----- HEADER WITH SLIDER BACKGROUND ----- */
+    header {
+      position: relative;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+    .header-slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .header-slider img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+    .header-slider img.active {
+      opacity: 1;
+    }
+    .header-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+    .header-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    }
+    .header-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      animation: fadeInDown 1s ease;
+    }
+    .header-content p {
+      font-size: 1.4rem;
+      opacity: 0.95;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ----- NAV ----- */
+    nav {
+      background: #1a2c3d;
+      padding: 14px 0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 20px;
+      padding: 0 16px;
+    }
+    nav ul li a {
+      color: #f0f4fa;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 30px;
+      transition: 0.3s;
+      display: inline-block;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      background: #4a7a9c;
+      transform: scale(1.05);
+    }
+
+    /* ----- container & cards ----- */
+    .container {
+      max-width: 1100px;
+      margin: 24px auto;
+      padding: 0 20px;
+      flex: 1;
+      width: 100%;
+    }
+    .page {
+      display: block;
+      background: white;
+      border-radius: 18px;
+      padding: 28px 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      margin-bottom: 30px;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .page.hidden {
+      display: none;
+    }
+    h2 {
+      color: #1e2f3f;
+      border-bottom: 3px solid #d0dce8;
+      padding-bottom: 10px;
+      margin-bottom: 22px;
+      font-weight: 600;
+    }
+    h3 {
+      font-weight: 600;
+      color: #1f3a4b;
+      margin: 18px 0 8px;
+    }
+    section { margin-bottom: 28px; }
+    .subsection-title {
+      font-weight: 600;
+      color: #2b4b64;
+      font-size: 1.1rem;
+      margin-top: 18px;
+      margin-bottom: 4px;
+    }
+    ul { margin-left: 24px; margin-bottom: 12px; }
+    li { margin-bottom: 4px; }
+
+    /* ----- images ----- */
+    .place-image, .river-image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin: 12px 0;
+      display: block;
+    }
+    .image-description {
+      text-align: center;
+      font-style: italic;
+      color: #4d5f6e;
+      margin: 6px 0 16px;
+      font-size: 0.95rem;
+    }
+
+    /* ----- GALLERY GRID ----- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin: 24px 0;
+    }
+    .gallery-item {
+      background: #f8fafc;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-item p {
+      padding: 12px 12px 14px;
+      margin: 0;
+      font-size: 0.95rem;
+      color: #2f4050;
+      text-align: center;
+    }
+
+    /* ----- CONTACT ----- */
+    .contact-details {
+      background: #eef3f8;
+      padding: 24px 28px;
+      border-radius: 20px;
+      text-align: center;
+      margin: 18px 0;
+    }
+    .contact-details p { margin: 8px 0; }
+    .hero-section {
+      background: #eef3f8;
+      padding: 30px 28px;
+      border-radius: 24px;
+      text-align: center;
+    }
+    .hero-section h2 { border-bottom: none; }
+
+    /* ----- NEWS & COMMENT ----- */
+    .news-article {
+      background: #f9fcff;
+      border-left: 5px solid #3c6e8f;
+      padding: 18px 22px;
+      margin-bottom: 22px;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    }
+    .news-article h4 {
+      font-size: 1.25rem;
+      color: #1f4057;
+      margin-bottom: 4px;
+    }
+    .news-article .meta {
+      font-size: 0.85rem;
+      color: #5d7385;
+      margin-bottom: 10px;
+    }
+    .news-article img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 10px 0;
+    }
+    .news-grid { display: flex; flex-direction: column; gap: 18px; }
+
+    /* ----- COMMENT SECTION ----- */
+    .comment-box {
+      background: #f1f6fa;
+      padding: 22px 26px;
+      border-radius: 18px;
+      margin-top: 30px;
+    }
+    .comment-box h3 {
+      margin-top: 0;
+      color: #1e3a4a;
+    }
+    .comment-box textarea {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #d5e0e8;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1rem;
+      resize: vertical;
+      min-height: 100px;
+      transition: border 0.3s;
+    }
+    .comment-box textarea:focus {
+      border-color: #3c6e8f;
+      outline: none;
+    }
+    .comment-box input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 2px solid #d5e0e8;
+      border-radius: 12px;
+      font-size: 1rem;
+      margin: 10px 0;
+      transition: border 0.3s;
+    }
+    .comment-box input:focus {
+      border-color: #3c6e8f;
+      outline: none;
+    }
+    .comment-box .btn-send {
+      background: #2c5f7a;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .comment-box .btn-send:hover {
+      background: #1e4a62;
+      transform: scale(1.03);
+    }
+    .comment-status {
+      margin-top: 12px;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: #dff0d8;
+      color: #2d6a4f;
+      display: none;
+    }
+    .comment-status.show {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    /* ----- FOOTER ----- */
+    footer {
+      background: #1a2c3d;
+      color: #d3dee9;
+      text-align: center;
+      padding: 18px 12px;
+      font-size: 0.9rem;
+      margin-top: 20px;
+    }
+    footer a { color: #9bc2db; }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      header { height: 280px; }
+      .header-content h1 { font-size: 2rem; }
+      .header-content p { font-size: 1rem; }
+      .container { padding: 0 12px; }
+      .page { padding: 20px 16px; }
+      nav ul { gap: 4px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== HEADER WITH SLIDER ===== -->
+  <header>
+    <div class="header-slider" id="headerSlider">
+      <img src="mosque.jpg" alt="Mosque" class="active">
+      <img src="river2.jpg" alt="River">
+      <img src="school.jpg" alt="School">
+      <img src="school1.jpg" alt="School 1">
+      <img src="river2.jpg" alt="River 2">
+    </div>
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <h1>স্বাগতম চন্দ্রকোটা গ্রাম</h1>
+      <p>A Beautiful village in Purba Bardhaman, West Bengal</p>
+    </div>
+  </header>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav>
+    <ul>
+      <li><a href="#" data-page="home" class="active">Home</a></li>
+      <li><a href="#" data-page="about">About</a></li>
+      <li><a href="#" data-page="gallery">Gallery</a></li>
+      <li><a href="#" data-page="contact">Contact</a></li>
+      <li><a href="#" data-page="news">News</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <!-- ===== HOME ===== -->
+    <div id="page-home" class="page">
+      <section class="hero-section">
+        <h2>Discover Chandrakota: A Serene Village</h2>
+        <p>Welcome to the official website of Chandrakota, a serene and beautiful village nestled in the Katwa PS area of Purba Bardhaman District, West Bengal, India. Our village spans an area of approximately 2 square kilometers and is a vibrant community with a rich local culture.</p>
+        <p>Chandrakota is uniquely blessed by the presence of the small but significant Sonajan River, flowing gracefully along the eastern side of our village, enhancing its natural beauty and providing a tranquil environment.</p>
+        <img src="river2.jpg" alt="Sonajan River" class="river-image">
+        <p class="image-description">Sonajan River flowing by Chandrakota.</p>
+      </section>
+      <section>
+        <h2>Geographic & Community Snapshot</h2>
+        <p>Chandrakota is located at latitude 23.5984284° N and longitude 88.0987751° E, PIN: 713150.</p>
+        <p>With an approximate population of 3500+, Chandrakota is a close-knit community. The village is proud to host two major mosques and a long-standing primary school.</p>
+        <p>Find out more on the <a href="#" data-page="about">About Chandrakota</a> page.</p>
+      </section>
+      <section>
+        <h2>A Message from the Creator</h2>
+        <p>This website has been created by Md Hosain Sk, a proud and well-educated member of Chandrakota village. My aim is to share the beauty, history, and current status of our beloved village with the wider world.</p>
+      </section>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <div id="page-about" class="page hidden">
+      <section>
+        <h2>Demographics and Community Life</h2>
+        <p>Chandrakota is a village under Katwa PS, Purba Bardhaman District, West Bengal, PIN 713150. Population ~3500.</p>
+        <p>The village has a 100% Islamic population, reflecting strong adherence to Islamic traditions and values.</p>
+      </section>
+      <section>
+        <h2>Religious Institutions</h2>
+        <div class="subsection-title">Masjid Baitul Mokkaram</div>
+        <img src="mosque.jpg" alt="Masjid Baitul Mokkaram" class="place-image">
+        <p class="image-description">Masjid Baitul Mokkaram: A two-floor mosque with multiple minarets.</p>
+        <ul>
+          <li>Established in 1984.</li>
+          <li>Two-floor mosque with multiple minarets.</li>
+          <li>Central hub for daily prayers and Friday congregations.</li>
+        </ul>
+        <div class="subsection-title">Second Major Mosque</div>
+        <p>Another significant mosque serves the spiritual needs of the community.</p>
+        <div class="subsection-title">Maktabs</div>
+        <p>Two major Maktabs provide Quranic studies and Islamic education to children and adults.</p>
+      </section>
+      <section>
+        <h2>Education</h2>
+        <div class="subsection-title">CHANDRAKOTA FP SCHOOL</div>
+        <img src="school.jpg" alt="Chandrakota FP School" class="place-image">
+        <p class="image-description">Chandrakota FP School: Established in 1955.</p>
+        <ul>
+          <li>Established in 1955.</li>
+          <li>Cornerstone of formal education for generations.</li>
+        </ul>
+        <h3>Literacy Rate</h3>
+        <p>Current literacy rate: <strong>45%</strong> – significant improvement from the past.</p>
+      </section>
+    </div>
+
+    <!-- ===== GALLERY (with more images) ===== -->
+    <div id="page-gallery" class="page hidden">
+      <h2>Chandrakota Photo Gallery</h2>
+      <p>Capturing the essence, beauty, and daily life of our village.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item"><img src="river.jpg" alt="River"><p>Sonajan River</p></div>
+        <div class="gallery-item"><img src="mosque.jpg" alt="Mosque"><p>Masjid Baitul Mokkaram</p></div>
+        <div class="gallery-item"><img src="school.jpg" alt="School"><p>Chandrakota FP School</p></div>
+        <div class="gallery-item"><img src="vill.jpg" alt="Village"><p>Daily Village Life</p></div>
+        <div class="gallery-item"><img src="math.jpg" alt="Agriculture"><p>Agricultural Fields</p></div>
+        <div class="gallery-item"><img src="maktab.jpg" alt="Maktab"><p>Maktab Education</p></div>
+        <!-- New images added -->
+        <div class="gallery-item"><img src="math1.jpg" alt="Math 1"><p>Green Fields - 1</p></div>
+        <div class="gallery-item"><img src="math2.jpg" alt="Math 2"><p>Green Fields - 2</p></div>
+        <div class="gallery-item"><img src="math3.jpg" alt="Math 3"><p>Green Fields - 3</p></div>
+        <div class="gallery-item"><img src="sport.jpg" alt="Sports"><p>Village Sports</p></div>
+        <div class="gallery-item"><img src="river2.jpg" alt="River 2"><p>Sonajan River View</p></div>
+        <div class="gallery-item"><img src="school1.jpg" alt="School 1"><p>School Campus</p></div>
+      </div>
+    </div>
+
+    <!-- ===== CONTACT ===== -->
+    <div id="page-contact" class="page hidden">
+      <h2>Connect with Chandrakota</h2>
+      <p>We'd love to hear from you!</p>
+      <div class="contact-details">
+        <p><strong>📞 Phone:</strong> 8768693661</p>
+        <p><strong>✉️ Email:</strong> <a href="mailto:mdhosainsk@gmail.com">mdhosainsk@gmail.com</a></p>
+        <p><strong>👤 Creator:</strong> Md Hosain Sk</p>
+        <p><strong>📍 Location:</strong> Chandrakota, PS Katwa, Purba Bardhaman, WB, PIN: 713150</p>
+        <p><strong>🌐 Coordinates:</strong> 23.5984284° N, 88.0987751° E</p>
+      </div>
+    </div>
+
+    <!-- ===== NEWS WITH COMMENT ===== -->
+    <div id="page-news" class="page hidden">
+      <h2>📰 Chandrakota Village News</h2>
+      <p>Stay updated with the latest happenings from our community.</p>
+      <div class="news-grid">
+        <div class="news-article">
+          <h4>🌟 Annual Cultural Meet 2026</h4>
+          <div class="meta">📅 23 August 2026 • by Md Hosain Sk</div>
+          <img src="vill.jpg" alt="Cultural event" style="width:100%; max-width:400px; border-radius:12px;">
+          <p>The Chandrakota community is gearing up for its annual cultural meet on 15 December 2026. All residents are invited to participate in music, poetry, and traditional performances. Let's celebrate our heritage together!</p>
+        </div>
+        <div class="news-article">
+          <h4>📚 New Maktab Classes for Adults</h4>
+          <div class="meta">📅 20 August 2026 • by Imam R. Ali</div>
+          <img src="maktab.jpg" alt="Maktab class" style="width:100%; max-width:400px; border-radius:12px;">
+          <p>To promote lifelong learning, the village Maktabs have started evening classes for adults. The program focuses on Quranic recitation, basic Arabic, and Islamic values. Registration is open at the central mosque.</p>
+        </div>
+        <div class="news-article">
+          <h4>🚰 Clean Water Initiative Launched</h4>
+          <div class="meta">📅 15 August 2026 • by Village Panchayat</div>
+          <img src="math.jpg" alt="Water project" style="width:100%; max-width:400px; border-radius:12px;">
+          <p>A new water purification system has been installed near the main mosque, providing safe drinking water to all residents. The project was funded by community contributions and local government support.</p>
+        </div>
+        <div class="news-article">
+          <h4>🏏 Chandrakota Cricket Team Wins Local Cup</h4>
+          <div class="meta">📅 10 August 2026 • by Sports Club</div>
+          <img src="sport.jpg" alt="Cricket" style="width:100%; max-width:400px; border-radius:12px;">
+          <p>Our village cricket team emerged victorious in the Katwa Block Inter-Village Tournament. The team was felicitated by the village elders and residents. Congratulations to all the players!</p>
+        </div>
+      </div>
+
+      <!-- ===== COMMENT / FEEDBACK SECTION ===== -->
+      <div class="comment-box">
+        <h3>💬 Share Your Feedback</h3>
+        <p>Write your thoughts about this news article or any message for the village community.</p>
+        <form id="commentForm">
+          <input type="text" id="commentName" placeholder="Your Name" required>
+          <input type="email" id="commentEmail" placeholder="Your Email" required>
+          <textarea id="commentMessage" placeholder="Write your message here..." required></textarea>
+          <button type="submit" class="btn-send">📧 Send Message</button>
+        </form>
+        <div id="commentStatus" class="comment-status">
+          ✅ Thank you! Your message has been sent to <strong>mdhosainsk@gmail.com</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Chandrakota Village. All rights reserved. | Website by <a href="mailto:mdhosainsk@gmail.com">Md Hosain Sk</a></p>
+  </footer>
+
+  <script>
+    (function() {
+      // ========== HEADER IMAGE SLIDER ==========
+      const sliderImages = document.querySelectorAll('.header-slider img');
+      let currentSlide = 0;
+      const totalSlides = sliderImages.length;
+
+      function nextSlide() {
+        sliderImages.forEach(img => img.classList.remove('active'));
+        currentSlide = (currentSlide + 1) % totalSlides;
+        sliderImages[currentSlide].classList.add('active');
+      }
+      if (totalSlides > 1) {
+        setInterval(nextSlide, 4000);
+      }
+
+      // ========== PAGE NAVIGATION ==========
+      const navLinks = document.querySelectorAll('nav a[data-page]');
+      const pages = {
+        home: document.getElementById('page-home'),
+        about: document.getElementById('page-about'),
+        gallery: document.getElementById('page-gallery'),
+        contact: document.getElementById('page-contact'),
+        news: document.getElementById('page-news')
+      };
+
+      function showPage(pageId) {
+        Object.keys(pages).forEach(key => {
+          if (pages[key]) pages[key].classList.add('hidden');
+        });
+        if (pages[pageId]) pages[pageId].classList.remove('hidden');
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.dataset.page === pageId) link.classList.add('active');
+        });
+        document.querySelector('.container')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const page = this.dataset.page;
+          if (page && pages[page]) {
+            showPage(page);
+            window.location.hash = page;
+          }
+        });
+      });
+
+      // internal links with data-page
+      document.querySelectorAll('a[data-page]').forEach(a => {
+        if (a.closest('nav')) return;
+        a.addEventListener('click', function(e) {
+          e.preventDefault();
+          const page = this.dataset.page;
+          if (page && pages[page]) {
+            showPage(page);
+            window.location.hash = page;
+          }
+        });
+      });
+
+      function handleHash() {
+        const hash = window.location.hash.replace('#', '');
+        if (hash && pages[hash]) showPage(hash);
+        else showPage('home');
+      }
+      window.addEventListener('hashchange', handleHash);
+      handleHash();
+
+      // ========== COMMENT / FEEDBACK FORM ==========
+      const commentForm = document.getElementById('commentForm');
+      const commentStatus = document.getElementById('commentStatus');
+
+      if (commentForm) {
+        commentForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const name = document.getElementById('commentName').value.trim();
+          const email = document.getElementById('commentEmail').value.trim();
+          const message = document.getElementById('commentMessage').value.trim();
+
+          if (!name || !email || !message) {
+            alert('Please fill all fields.');
+            return;
+          }
+
+          // Build mailto link
+          const subject = encodeURIComponent('Feedback from ' + name + ' - Chandrakota Village');
+          const body = encodeURIComponent(
+            'Name: ' + name + '\n' +
+            'Email: ' + email + '\n\n' +
+            'Message:\n' + message
+          );
+          const mailtoLink = 'mailto:mdhosainsk@gmail.com?subject=' + subject + '&body=' + body;
+
+          // Open email client
+          window.location.href = mailtoLink;
+
+          // Show success status
+          commentStatus.classList.add('show');
+          commentStatus.innerHTML = '✅ Thank you, ' + name + '! Your message has been sent to <strong>mdhosainsk@gmail.com</strong>';
+
+          // Reset form
+          commentForm.reset();
+
+          // Hide status after 10 seconds
+          setTimeout(() => {
+            commentStatus.classList.remove('show');
+          }, 10000);
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
