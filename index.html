@@ -18,10 +18,10 @@
     a { color: #2a7faa; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ----- HEADER WITH SLIDER BACKGROUND ----- */
+    /* ===== HEADER WITH FULL BACKGROUND SLIDER ===== */
     header {
       position: relative;
-      height: 380px;
+      height: 450px; /* বড় করা হয়েছে */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -39,9 +39,12 @@
     }
     .header-slider img {
       position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: cover; /* পুরো কভার করবে */
+      object-position: center center; /* সেন্টার থেকে দেখাবে */
       opacity: 0;
       transition: opacity 1.2s ease-in-out;
     }
@@ -54,24 +57,24 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.50); /* একটু ডার্ক করা হয়েছে */
       z-index: 1;
     }
     .header-content {
       position: relative;
       z-index: 2;
       padding: 20px;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.7);
     }
     .header-content h1 {
-      font-size: 3.2rem;
+      font-size: 3.5rem;
       font-weight: 700;
       letter-spacing: 2px;
       margin-bottom: 8px;
       animation: fadeInDown 1s ease;
     }
     .header-content p {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       opacity: 0.95;
       animation: fadeInUp 1s ease;
     }
@@ -85,7 +88,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* ----- NAV ----- */
+    /* ===== NAV ===== */
     nav {
       background: #1a2c3d;
       padding: 14px 0;
@@ -117,7 +120,7 @@
       transform: scale(1.05);
     }
 
-    /* ----- container & cards ----- */
+    /* ===== container & cards ===== */
     .container {
       max-width: 1100px;
       margin: 24px auto;
@@ -138,9 +141,7 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .page.hidden {
-      display: none;
-    }
+    .page.hidden { display: none; }
     h2 {
       color: #1e2f3f;
       border-bottom: 3px solid #d0dce8;
@@ -164,7 +165,7 @@
     ul { margin-left: 24px; margin-bottom: 12px; }
     li { margin-bottom: 4px; }
 
-    /* ----- images ----- */
+    /* ===== images ===== */
     .place-image, .river-image {
       max-width: 100%;
       height: auto;
@@ -181,7 +182,7 @@
       font-size: 0.95rem;
     }
 
-    /* ----- GALLERY GRID ----- */
+    /* ===== GALLERY GRID ===== */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -213,7 +214,7 @@
       text-align: center;
     }
 
-    /* ----- CONTACT ----- */
+    /* ===== CONTACT ===== */
     .contact-details {
       background: #eef3f8;
       padding: 24px 28px;
@@ -230,7 +231,7 @@
     }
     .hero-section h2 { border-bottom: none; }
 
-    /* ----- NEWS & COMMENT ----- */
+    /* ===== NEWS & COMMENT ===== */
     .news-article {
       background: #f9fcff;
       border-left: 5px solid #3c6e8f;
@@ -256,7 +257,7 @@
     }
     .news-grid { display: flex; flex-direction: column; gap: 18px; }
 
-    /* ----- COMMENT SECTION ----- */
+    /* ===== COMMENT SECTION ===== */
     .comment-box {
       background: #f1f6fa;
       padding: 22px 26px;
@@ -323,7 +324,7 @@
       animation: fadeIn 0.4s ease;
     }
 
-    /* ----- FOOTER ----- */
+    /* ===== FOOTER ===== */
     footer {
       background: #1a2c3d;
       color: #d3dee9;
@@ -334,11 +335,11 @@
     }
     footer a { color: #9bc2db; }
 
-    /* responsive */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 700px) {
-      header { height: 280px; }
-      .header-content h1 { font-size: 2rem; }
-      .header-content p { font-size: 1rem; }
+      header { height: 320px; }
+      .header-content h1 { font-size: 2.2rem; }
+      .header-content p { font-size: 1.1rem; }
       .container { padding: 0 12px; }
       .page { padding: 20px 16px; }
       nav ul { gap: 4px 10px; }
@@ -378,9 +379,9 @@
     <div id="page-home" class="page">
       <section class="hero-section">
         <h2>Discover Chandrakota: A Serene Village</h2>
-        <p>Welcome to the official website of Chandrakota, a serene and beautiful village nestled in the Katwa PS area of Purba Bardhaman District, West Bengal, India. Our village spans an area of approximately 2 square kilometers and is a vibrant community with a rich local culture.</p>
+        <p>Welcome to the official website of Chandrakota, a serene and beautiful village nestled in the Katwa PS area of Purba Bardhaman District, West Bengal, India. Our village spans an area of approximately 1.2 square kilometers and is a vibrant community with a rich local culture.</p>
         <p>Chandrakota is uniquely blessed by the presence of the small but significant Sonajan River, flowing gracefully along the eastern side of our village, enhancing its natural beauty and providing a tranquil environment.</p>
-        <img src="river2.jpg" alt="Sonajan River" class="river-image">
+        <img src="river.jpg" alt="Sonajan River" class="river-image">
         <p class="image-description">Sonajan River flowing by Chandrakota.</p>
       </section>
       <section>
@@ -413,9 +414,9 @@
           <li>Central hub for daily prayers and Friday congregations.</li>
         </ul>
         <div class="subsection-title">Second Major Mosque</div>
-        <p>Another significant mosque মসজিদে সিদ্দিকীয়া, চন্দ্রকোটা পশ্চিম পাড়া Serves the spiritual needs of the community.</p>
+        <p>Another significant mosque CHANDRAKOTA PASCHIM PARA MASJIDE SIDDEKIYA  serves the spiritual needs of the community.</p>
         <div class="subsection-title">Maktabs</div>
-        <p>Two major Maktabs provide Quranic studies and Islamic education to children.</p>
+        <p>Two major Maktabs provide Quranic studies and Islamic education to children .</p>
       </section>
       <section>
         <h2>Education</h2>
@@ -427,11 +428,11 @@
           <li>Cornerstone of formal education for generations.</li>
         </ul>
         <h3>Literacy Rate</h3>
-        <p>Current literacy rate: <strong> ~70%</strong> – significant improvement from the past.</p>
+        <p>Current literacy rate: <strong>45%</strong> – significant improvement from the past.</p>
       </section>
     </div>
 
-    <!-- ===== GALLERY (with more images) ===== -->
+    <!-- ===== GALLERY ===== -->
     <div id="page-gallery" class="page hidden">
       <h2>Chandrakota Photo Gallery</h2>
       <p>Capturing the essence, beauty, and daily life of our village.</p>
@@ -465,7 +466,7 @@
       </div>
     </div>
 
-    <!-- ===== NEWS WITH COMMENT ===== -->
+    <!-- ===== NEWS ===== -->
     <div id="page-news" class="page hidden">
       <h2>📰 Chandrakota Village News</h2>
       <p>Stay updated with the latest happenings from our community.</p>
@@ -496,7 +497,7 @@
         </div>
       </div>
 
-      <!-- ===== COMMENT / FEEDBACK SECTION ===== -->
+      <!-- ===== COMMENT / FEEDBACK ===== -->
       <div class="comment-box">
         <h3>💬 Share Your Feedback</h3>
         <p>Write your thoughts about this news article or any message for the village community.</p>
@@ -519,7 +520,7 @@
 
   <script>
     (function() {
-      // ========== HEADER IMAGE SLIDER ==========
+      // ===== HEADER IMAGE SLIDER =====
       const sliderImages = document.querySelectorAll('.header-slider img');
       let currentSlide = 0;
       const totalSlides = sliderImages.length;
@@ -533,7 +534,7 @@
         setInterval(nextSlide, 4000);
       }
 
-      // ========== PAGE NAVIGATION ==========
+      // ===== PAGE NAVIGATION =====
       const navLinks = document.querySelectorAll('nav a[data-page]');
       const pages = {
         home: document.getElementById('page-home'),
@@ -567,7 +568,6 @@
         });
       });
 
-      // internal links with data-page
       document.querySelectorAll('a[data-page]').forEach(a => {
         if (a.closest('nav')) return;
         a.addEventListener('click', function(e) {
@@ -588,7 +588,7 @@
       window.addEventListener('hashchange', handleHash);
       handleHash();
 
-      // ========== COMMENT / FEEDBACK FORM ==========
+      // ===== COMMENT FORM =====
       const commentForm = document.getElementById('commentForm');
       const commentStatus = document.getElementById('commentStatus');
 
@@ -604,7 +604,6 @@
             return;
           }
 
-          // Build mailto link
           const subject = encodeURIComponent('Feedback from ' + name + ' - Chandrakota Village');
           const body = encodeURIComponent(
             'Name: ' + name + '\n' +
@@ -612,18 +611,12 @@
             'Message:\n' + message
           );
           const mailtoLink = 'mailto:mdhosainsk@gmail.com?subject=' + subject + '&body=' + body;
-
-          // Open email client
           window.location.href = mailtoLink;
 
-          // Show success status
           commentStatus.classList.add('show');
           commentStatus.innerHTML = '✅ Thank you, ' + name + '! Your message has been sent to <strong>mdhosainsk@gmail.com</strong>';
-
-          // Reset form
           commentForm.reset();
 
-          // Hide status after 10 seconds
           setTimeout(() => {
             commentStatus.classList.remove('show');
           }, 10000);
