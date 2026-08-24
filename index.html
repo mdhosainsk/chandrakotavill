@@ -18,10 +18,10 @@
     a { color: #2a7faa; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ===== HEADER WITH FULL BACKGROUND SLIDER ===== */
+    /* ===== HEADER ===== */
     header {
       position: relative;
-      height: 450px; /* বড় করা হয়েছে */
+      height: 450px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -43,21 +43,19 @@
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover; /* পুরো কভার করবে */
-      object-position: center center; /* সেন্টার থেকে দেখাবে */
+      object-fit: cover;
+      object-position: center center;
       opacity: 0;
       transition: opacity 1.2s ease-in-out;
     }
-    .header-slider img.active {
-      opacity: 1;
-    }
+    .header-slider img.active { opacity: 1; }
     .header-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.50); /* একটু ডার্ক করা হয়েছে */
+      background: rgba(0, 0, 0, 0.50);
       z-index: 1;
     }
     .header-content {
@@ -78,7 +76,6 @@
       opacity: 0.95;
       animation: fadeInUp 1s ease;
     }
-
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -120,7 +117,7 @@
       transform: scale(1.05);
     }
 
-    /* ===== container & cards ===== */
+    /* ===== CONTAINER ===== */
     .container {
       max-width: 1100px;
       margin: 24px auto;
@@ -165,7 +162,7 @@
     ul { margin-left: 24px; margin-bottom: 12px; }
     li { margin-bottom: 4px; }
 
-    /* ===== images ===== */
+    /* ===== IMAGES ===== */
     .place-image, .river-image {
       max-width: 100%;
       height: auto;
@@ -182,7 +179,7 @@
       font-size: 0.95rem;
     }
 
-    /* ===== GALLERY GRID ===== */
+    /* ===== GALLERY ===== */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -195,6 +192,7 @@
       overflow: hidden;
       box-shadow: 0 2px 12px rgba(0,0,0,0.06);
       transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
     }
     .gallery-item:hover {
       transform: translateY(-6px);
@@ -214,6 +212,73 @@
       text-align: center;
     }
 
+    /* ===== IMAGE PREVIEW MODAL ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+    .modal.show { display: flex; }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      max-width: 90%;
+      max-height: 90%;
+      text-align: center;
+      position: relative;
+    }
+    .modal-content img {
+      max-width: 100%;
+      max-height: 70vh;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      background: none;
+      border: none;
+      transition: 0.3s;
+    }
+    .modal-close:hover { color: #e74c3c; transform: scale(1.2); }
+    .modal-download {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 25px;
+      background: #2c5f7a;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .modal-download:hover {
+      background: #1e4a62;
+      transform: scale(1.05);
+    }
+    .modal-caption {
+      margin: 10px 0 5px;
+      font-size: 1rem;
+      color: #333;
+    }
+
     /* ===== CONTACT ===== */
     .contact-details {
       background: #eef3f8;
@@ -231,7 +296,7 @@
     }
     .hero-section h2 { border-bottom: none; }
 
-    /* ===== NEWS & COMMENT ===== */
+    /* ===== NEWS ===== */
     .news-article {
       background: #f9fcff;
       border-left: 5px solid #3c6e8f;
@@ -256,51 +321,211 @@
       margin: 10px 0;
     }
     .news-grid { display: flex; flex-direction: column; gap: 18px; }
-    /* ===== VIDEO ===== */
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
-  margin: 20px 0;
-}
-.video-item {
-  background: #f8fafc;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s;
-}
-.video-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-}
-.video-item video {
-  width: 100%;
-  display: block;
-  background: #000;
-  border-radius: 16px 16px 0 0;
-  max-height: 300px;
-  object-fit: cover;
-}
-.video-item p {
-  padding: 12px 16px;
-  margin: 0;
-  text-align: center;
-  color: #2f4050;
-  font-weight: 500;
-      }
 
-    /* ===== COMMENT SECTION ===== */
+    /* ===== FEATURED NEWS ===== */
+    .news-article.featured-news {
+      border-left: 5px solid #e74c3c;
+      background: #fffbfb;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .news-article.featured-news:hover {
+      background: #fff5f5;
+      transform: scale(1.01);
+    }
+    .news-badge {
+      display: inline-block;
+      background: #e74c3c;
+      color: white;
+      padding: 2px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+    .news-summary {
+      color: #444;
+      margin: 8px 0;
+      font-size: 0.95rem;
+    }
+    .read-more-btn {
+      background: #2c5f7a;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 5px;
+    }
+    .read-more-btn:hover {
+      background: #1e4a62;
+      transform: scale(1.05);
+    }
+
+    /* ===== NEWS MODAL ===== */
+    .news-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .news-modal.show {
+      display: flex;
+    }
+    .news-modal-content {
+      background: white;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 18px;
+      padding: 30px 35px;
+      position: relative;
+      animation: slideUp 0.4s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .news-modal-close {
+      position: sticky;
+      top: 0;
+      float: right;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #333;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 10;
+    }
+    .news-modal-close:hover {
+      color: #e74c3c;
+      transform: scale(1.2);
+    }
+    .news-modal-header {
+      border-bottom: 2px solid #d0dce8;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+    .news-modal-header h2 {
+      font-size: 1.8rem;
+      color: #1a2c3d;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 8px;
+    }
+    .news-modal-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      color: #5d7385;
+      font-size: 0.9rem;
+    }
+    .news-modal-body {
+      line-height: 1.8;
+    }
+    .news-modal-body p {
+      margin-bottom: 12px;
+    }
+
+    /* ===== NOTICE ===== */
+    .notice-box {
+      background: #f0f7fb;
+      border: 2px solid #2c5f7a;
+      border-radius: 16px;
+      padding: 25px 30px;
+      text-align: center;
+      margin: 20px 0;
+    }
+    .notice-box h3 {
+      color: #1a3a4a;
+      margin-top: 0;
+    }
+    .notice-box .pdf-viewer {
+      width: 100%;
+      height: 500px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      margin: 15px 0;
+    }
+    .notice-box .btn-download {
+      display: inline-block;
+      padding: 12px 35px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .notice-box .btn-download:hover {
+      background: #c0392b;
+      transform: scale(1.05);
+    }
+
+    /* ===== VIDEO ===== */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin: 20px 0;
+    }
+    .video-item {
+      background: #f8fafc;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+    .video-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .video-item video {
+      width: 100%;
+      display: block;
+      background: #000;
+      border-radius: 16px 16px 0 0;
+      max-height: 300px;
+      object-fit: cover;
+    }
+    .video-item p {
+      padding: 12px 16px;
+      margin: 0;
+      text-align: center;
+      color: #2f4050;
+      font-weight: 500;
+    }
+
+    /* ===== COMMENT ===== */
     .comment-box {
       background: #f1f6fa;
       padding: 22px 26px;
       border-radius: 18px;
       margin-top: 30px;
     }
-    .comment-box h3 {
-      margin-top: 0;
-      color: #1e3a4a;
-    }
+    .comment-box h3 { margin-top: 0; color: #1e3a4a; }
     .comment-box textarea {
       width: 100%;
       padding: 14px;
@@ -338,7 +563,7 @@
       font-size: 1.05rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
+      transition: 0.3s;
     }
     .comment-box .btn-send:hover {
       background: #1e4a62;
@@ -376,11 +601,16 @@
       .container { padding: 0 12px; }
       .page { padding: 20px 16px; }
       nav ul { gap: 4px 10px; }
+      .modal-content { max-width: 95%; padding: 15px; }
+      .notice-box .pdf-viewer { height: 300px; }
+      .news-modal-content { padding: 20px 18px; }
+      .news-modal-header h2 { font-size: 1.4rem; }
+      .news-modal-close { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
-  <!-- ===== HEADER WITH SLIDER ===== -->
+  <!-- ===== HEADER ===== -->
   <header>
     <div class="header-slider" id="headerSlider">
       <img src="mosque.jpg" alt="Mosque" class="active">
@@ -388,8 +618,8 @@
       <img src="school.jpg" alt="School">
       <img src="school1.jpg" alt="School 1">
       <img src="river2.jpg" alt="River 2">
-      <img src="math5.jpg" alt="river4">
-      <img src="math6.jpg" alt="math4">
+      <img src="math5.jpg" alt="math 5">
+      <img src="math6.jpg" alt="math6">
     </div>
     <div class="header-overlay"></div>
     <div class="header-content">
@@ -406,6 +636,7 @@
       <li><a href="#" data-page="gallery">Gallery</a></li>
       <li><a href="#" data-page="contact">Contact</a></li>
       <li><a href="#" data-page="news">News</a></li>
+      <li><a href="#" data-page="notice">Notice</a></li>
       <li><a href="#" data-page="video">Video</a></li>
     </ul>
   </nav>
@@ -415,20 +646,19 @@
     <div id="page-home" class="page">
       <section class="hero-section">
         <h2>Discover Chandrakota: A Serene Village</h2>
-        <p>Welcome to the official website of Chandrakota, a serene and beautiful village nestled in the Katwa PS area of Purba Bardhaman District, West Bengal, India. Our village spans an area of approximately 1.2 square kilometers and is a vibrant community with a rich local culture.</p>
-        <p>Chandrakota is uniquely blessed by the presence of the small but significant Sonajan River, flowing gracefully along the eastern side of our village, enhancing its natural beauty and providing a tranquil environment.</p>
+        <p>Welcome to the official website of Chandrakota, a serene and beautiful village nestled in the Katwa PS area of Purba Bardhaman District, West Bengal, India.</p>
+        <p>Chandrakota is uniquely blessed by the presence of the small but significant Sonajan River, flowing gracefully along the eastern side of our village.</p>
         <img src="river.jpg" alt="Sonajan River" class="river-image">
         <p class="image-description">Sonajan River flowing by Chandrakota.</p>
       </section>
       <section>
         <h2>Geographic & Community Snapshot</h2>
         <p>Chandrakota is located at latitude 23.5984284° N and longitude 88.0987751° E, PIN: 713150.</p>
-        <p>With an approximate population of 2000+, Chandrakota is a close-knit community. The village is proud to host two major mosques and a long-standing primary school.</p>
-        <p>Find out more on the <a href="#" data-page="about">About Chandrakota</a> page.</p>
+        <p>With an approximate population of <strong>2000+</strong>, Chandrakota is a close-knit community.</p>
       </section>
       <section>
         <h2>A Message from the Creator</h2>
-        <p>This website has been created by Md Hosain Sk, a proud and well-educated member of Chandrakota village. My aim is to share the beauty, history, and current status of our beloved village with the wider world.</p>
+        <p>This website has been created by Md Hosain Sk, a proud member of Chandrakota village.</p>
       </section>
     </div>
 
@@ -436,8 +666,8 @@
     <div id="page-about" class="page hidden">
       <section>
         <h2>Demographics and Community Life</h2>
-        <p>Chandrakota is a village under Katwa PS, Purba Bardhaman District, West Bengal, PIN 713150. Population ~2000.</p>
-        <p>The village has a 100% Islamic population, reflecting strong adherence to Islamic traditions and values.</p>
+        <p>Chandrakota is a village under Katwa PS, Purba Bardhaman District, West Bengal, PIN 713150. Population <strong>2000+</strong>.</p>
+        <p>The village has a 100% Islamic population, reflecting strong adherence to Islamic traditions.</p>
       </section>
       <section>
         <h2>Religious Institutions</h2>
@@ -445,14 +675,14 @@
         <img src="mosque.jpg" alt="Masjid Baitul Mokkaram" class="place-image">
         <p class="image-description">Masjid Baitul Mokkaram: A two-floor mosque with multiple minarets.</p>
         <ul>
-          <li>Established in 1974.</li>
+          <li>Established in <strong>1973</strong>.</li>
           <li>Two-floor mosque with multiple minarets.</li>
           <li>Central hub for daily prayers and Friday congregations.</li>
         </ul>
         <div class="subsection-title">Second Major Mosque</div>
-        <p>Another significant mosque CHANDRAKOTA PASCHIM PARA MASJIDE SIDDEKIYA  serves the spiritual needs of the community.</p>
+        <p>Another significant mosque serves the spiritual needs of the community.</p>
         <div class="subsection-title">Maktabs</div>
-        <p>Two major Maktabs provide Quranic studies and Islamic education to children .</p>
+        <p>Two major Maktabs provide Quranic studies and Islamic education.</p>
       </section>
       <section>
         <h2>Education</h2>
@@ -471,21 +701,64 @@
     <!-- ===== GALLERY ===== -->
     <div id="page-gallery" class="page hidden">
       <h2>Chandrakota Photo Gallery</h2>
-      <p>Capturing the essence, beauty, and daily life of our village.</p>
-      <div class="gallery-grid">
-        <div class="gallery-item"><img src="river.jpg" alt="River"><p>Sonajan River</p></div>
-        <div class="gallery-item"><img src="mosque.jpg" alt="Mosque"><p>Masjid Baitul Mokkaram</p></div>
-        <div class="gallery-item"><img src="school.jpg" alt="School"><p>Chandrakota FP School</p></div>
-        <div class="gallery-item"><img src="vill.jpg" alt="Village"><p>Daily Village Life</p></div>
-        <div class="gallery-item"><img src="math.jpg" alt="Agriculture"><p>Agricultural Fields</p></div>
-        <div class="gallery-item"><img src="maktab.jpg" alt="Maktab"><p>Maktab Education</p></div>
-        <!-- New images added -->
-        <div class="gallery-item"><img src="math1.jpg" alt="Math 1"><p>Green Fields - 1</p></div>
-        <div class="gallery-item"><img src="math2.jpg" alt="Math 2"><p>Green Fields - 2</p></div>
-        <div class="gallery-item"><img src="math3.jpg" alt="Math 3"><p>Green Fields - 3</p></div>
-        <div class="gallery-item"><img src="sport.jpg" alt="Sports"><p>Village Sports</p></div>
-        <div class="gallery-item"><img src="river2.jpg" alt="River 2"><p>Sonajan River View</p></div>
-        <div class="gallery-item"><img src="school1.jpg" alt="School 1"><p>School Campus</p></div>
+      <p>Click on any image to preview and download.</p>
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item" data-src="river.jpg" data-caption="Sonajan River">
+          <img src="river.jpg" alt="River">
+          <p>Sonajan River</p>
+        </div>
+        <div class="gallery-item" data-src="mosque.jpg" data-caption="Masjid Baitul Mokkaram">
+          <img src="mosque.jpg" alt="Mosque">
+          <p>Masjid Baitul Mokkaram</p>
+        </div>
+        <div class="gallery-item" data-src="school.jpg" data-caption="Chandrakota FP School">
+          <img src="school.jpg" alt="School">
+          <p>Chandrakota FP School</p>
+        </div>
+        <div class="gallery-item" data-src="vill.jpg" data-caption="Daily Village Life">
+          <img src="vill.jpg" alt="Village">
+          <p>Daily Village Life</p>
+        </div>
+        <div class="gallery-item" data-src="math.jpg" data-caption="Agricultural Fields">
+          <img src="math.jpg" alt="Agriculture">
+          <p>Agricultural Fields</p>
+        </div>
+        <div class="gallery-item" data-src="maktab.jpg" data-caption="Maktab Education">
+          <img src="maktab.jpg" alt="Maktab">
+          <p>Maktab Education</p>
+        </div>
+        <div class="gallery-item" data-src="math1.jpg" data-caption="Green Fields - 1">
+          <img src="math1.jpg" alt="Math 1">
+          <p>Green Fields - 1</p>
+        </div>
+        <div class="gallery-item" data-src="math2.jpg" data-caption="Green Fields - 2">
+          <img src="math2.jpg" alt="Math 2">
+          <p>Green Fields - 2</p>
+        </div>
+        <div class="gallery-item" data-src="math3.jpg" data-caption="Green Fields - 3">
+          <img src="math3.jpg" alt="Math 3">
+          <p>Green Fields - 3</p>
+        </div>
+        <div class="gallery-item" data-src="sport.jpg" data-caption="Village Sports">
+          <img src="sport.jpg" alt="Sports">
+          <p>Village Sports</p>
+        </div>
+        <div class="gallery-item" data-src="river2.jpg" data-caption="Sonajan River View">
+          <img src="river2.jpg" alt="River 2">
+          <p>Sonajan River View</p>
+        </div>
+        <div class="gallery-item" data-src="school1.jpg" data-caption="School Campus">
+          <img src="school1.jpg" alt="School 1">
+          <p>School Campus</p>
+        </div>
+        <div class="gallery-item" data-src="math5.jpg" data-caption="Math 5">
+          <img src="math5.jpg" alt="Math 5">
+          <p>Math 5</p>
+        </div>
+        <div class="gallery-item" data-src="math6.jpg" data-caption="Math 6">
+          <img src="math6.jpg" alt="Math 6">
+          <p>Math 6</p>
+        </div>
       </div>
     </div>
 
@@ -507,83 +780,51 @@
       <h2>📰 Chandrakota Village News</h2>
       <p>Stay updated with the latest happenings from our community.</p>
       <div class="news-grid">
+        <!-- ===== FEATURED NEWS: East Bengal Wins Durand Cup ===== -->
+        <div class="news-article featured-news" onclick="openNewsModal()">
+          <div class="news-badge">🔴 LIVE</div>
+          <h4>ইস্টবেঙ্গল ৪-১ ব্যবধানে মোহনবাগানকে উড়িয়ে ১৭তম ডুরান্ড কাপ জিতল, রেকর্ডে সমতা</h4>
+          <div class="meta">📅 ২৪ আগস্ট ২০২৬, সন্ধ্যা ৭:৩০ বিএসটি • ✍️ মোহাম্মদ হোসেন শেখ</div>
+          <img src="sport.jpg" alt="East Bengal Durand Cup Victory" style="width:100%; max-width:100%; border-radius:12px; margin:10px 0;">
+          <p class="news-summary">
+            ইস্টবেঙ্গল মোহনবাগান সুপার জায়ান্টকে ৪-১ গোলে হারিয়ে তাদের ১৭তম ডুরান্ড কাপ শিরোপা জিতেছে। 
+            এডমন্ড লালরিন্ডিকার প্রথমার্ধের হ্যাটট্রিকে এই ঐতিহাসিক জয়।
+          </p>
+          <button class="read-more-btn" onclick="event.stopPropagation(); openNewsModal();">
+            📖 বিস্তারিত পড়ুন
+          </button>
+        </div>
+
+        <!-- Other News -->
         <div class="news-article">
           <h4>🌟 Annual Cultural Meet 2026</h4>
           <div class="meta">📅 23 August 2026 • by Md Hosain Sk</div>
           <img src="vill.jpg" alt="Cultural event" style="width:100%; max-width:400px; border-radius:12px;">
-          <p>The Chandrakota community is gearing up for its annual cultural meet on 15 December 2026. All residents are invited to participate in music, poetry, and traditional performances. Let's celebrate our heritage together!</p>
+          <p>The Chandrakota community is gearing up for its annual cultural meet on 15 December 2026. All residents are invited to participate in music, poetry, and traditional performances.</p>
         </div>
         <div class="news-article">
           <h4>📚 New Maktab Classes for Adults</h4>
           <div class="meta">📅 20 August 2026 • by Imam R. Ali</div>
           <img src="maktab.jpg" alt="Maktab class" style="width:100%; max-width:400px; border-radius:12px;">
-          <p>To promote lifelong learning, the village Maktabs have started evening classes for adults. The program focuses on Quranic recitation, basic Arabic, and Islamic values. Registration is open at the central mosque.</p>
+          <p>To promote lifelong learning, the village Maktabs have started evening classes for adults. The program focuses on Quranic recitation, basic Arabic, and Islamic values.</p>
         </div>
         <div class="news-article">
           <h4>🚰 Clean Water Initiative Launched</h4>
           <div class="meta">📅 15 August 2026 • by Village Panchayat</div>
           <img src="math.jpg" alt="Water project" style="width:100%; max-width:400px; border-radius:12px;">
-          <p>A new water purification system has been installed near the main mosque, providing safe drinking water to all residents. The project was funded by community contributions and local government support.</p>
+          <p>A new water purification system has been installed near the main mosque, providing safe drinking water to all residents.</p>
         </div>
         <div class="news-article">
           <h4>🏏 Chandrakota Cricket Team Wins Local Cup</h4>
           <div class="meta">📅 10 August 2026 • by Sports Club</div>
           <img src="sport.jpg" alt="Cricket" style="width:100%; max-width:400px; border-radius:12px;">
-          <p>Our village cricket team emerged victorious in the Katwa Block Inter-Village Tournament. The team was felicitated by the village elders and residents. Congratulations to all the players!</p>
+          <p>Our village cricket team emerged victorious in the Katwa Block Inter-Village Tournament.</p>
         </div>
-        <!-- ===== VIDEO ===== -->
-<div id="page-video" class="page hidden">
-  <h2>🎥 Chandrakota Village Videos</h2>
-  <p>Explore the beauty of our village through videos.</p>
-  
-  <div class="video-grid">
-    <!-- Video 1 -->
-    <div class="video-item">
-      <video controls width="100%" poster="vill.jpg">
-        <source src="video1.mp4" type="video/mp4">
-        আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
-      </video>
-      <p><strong>গ্রামের প্রাকৃতিক দৃশ্য</strong></p>
-    </div>
-    
-    <!-- Video 2 -->
-    <div class="video-item">
-      <video controls width="100%" poster="river.jpg">
-        <source src="video2.mp4" type="video/mp4">
-        আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
-      </video>
-      <p><strong>সোনাজন নদীর তীর</strong></p>
-    </div>
-    
-    <!-- Video 3 -->
-    <div class="video-item">
-      <video controls width="100%" poster="mosque.jpg">
-        <source src="video3.mp4" type="video/mp4">
-        আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
-      </video>
-      <p><strong>মসজিদের আদর্শ দৃশ্য</strong></p>
-    </div>
-    
-    <!-- Video 4 -->
-    <div class="video-item">
-      <video controls width="100%" poster="school.jpg">
-        <source src="video4.mp4" type="video/mp4">
-        আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
-      </video>
-      <p><strong>বিদ্যালয়ের পরিবেশ</strong></p>
-    </div>
-  </div>
-  
-  <p style="text-align:center; margin-top:20px; color:#666; font-style:italic;">
-    💡 আরও ভিডিও যোগ করতে এই HTML-এ নতুন <strong>&lt;div class="video-item"&gt;</strong> যোগ করুন।
-  </p>
-</div>
       </div>
 
-      <!-- ===== COMMENT / FEEDBACK ===== -->
+      <!-- COMMENT -->
       <div class="comment-box">
         <h3>💬 Share Your Feedback</h3>
-        <p>Write your thoughts about this news article or any message for the village community.</p>
         <form id="commentForm">
           <input type="text" id="commentName" placeholder="Your Name" required>
           <input type="email" id="commentEmail" placeholder="Your Email" required>
@@ -595,6 +836,156 @@
         </div>
       </div>
     </div>
+
+    <!-- ===== NOTICE ===== -->
+    <div id="page-notice" class="page hidden">
+      <h2>📢 Village Notices</h2>
+      <p>Stay informed about the latest announcements and important updates from Chandrakota Gram Panchayat.</p>
+      
+      <div class="notice-box">
+        <h3>📄 Current Notice</h3>
+        <p><strong>Issue Date:</strong> 23 August 2026</p>
+        <p><strong>Subject:</strong> Important Announcement for All Residents</p>
+        
+        <!-- PDF Viewer -->
+        <iframe src="current notice.pdf" class="pdf-viewer" id="pdfViewer"></iframe>
+        <p style="font-size:0.9rem; color:#666; margin:8px 0;">
+          ⚠️ PDF দৃশ্যমান না হলে নিচের ডাউনলোড বাটনে ক্লিক করুন।
+        </p>
+        
+        <!-- Download Button -->
+        <a href="current notice.pdf" download class="btn-download">
+          ⬇️ Download Notice (PDF)
+        </a>
+        
+        <div style="margin-top:20px; padding:15px; background:#e8f4f8; border-radius:12px; text-align:left;">
+          <h4 style="color:#1a3a4a;">📌 Notice Details:</h4>
+          <ul style="margin-left:20px;">
+            <li><strong>বিষয়:</strong> গ্রামের উন্নয়ন প্রকল্পের ঘোষণা</li>
+            <li><strong>তারিখ:</strong> ২৩ আগস্ট ২০২৬</li>
+            <li><strong>জারিকারী:</strong> চন্দ্রকোটা গ্রাম পঞ্চায়েত</li>
+            <li><strong>বর্ণনা:</strong> গ্রামের সকল বাসিন্দাদের জানানো যাচ্ছে যে, আগামী ১৫ সেপ্টেম্বর ২০২৬ তারিখে একটি বিশেষ সভা অনুষ্ঠিত হবে।</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div style="background:#f9f9f9; padding:20px; border-radius:12px; margin-top:20px;">
+        <h3>📜 Previous Notices</h3>
+        <ul style="margin-left:20px;">
+          <li><a href="#">গ্রাম সভার নোটিশ - ১৫ জুলাই ২০২৬</a></li>
+          <li><a href="#">মসজিদ কমিটির ঘোষণা - ০১ জুন ২০২৬</a></li>
+          <li><a href="#">শিক্ষা সচেতনতা কর্মসূচি - ১০ মে ২০২৬</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== VIDEO ===== -->
+    <div id="page-video" class="page hidden">
+      <h2>🎥 Chandrakota Village Videos</h2>
+      <p>Explore the beauty of our village through videos.</p>
+      
+      <div class="video-grid">
+        <!-- Video 1 -->
+        <div class="video-item">
+          <video controls width="100%" poster="vill.jpg">
+            <source src="video1.mp4" type="video/mp4">
+            আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
+          </video>
+          <p><strong>গ্রামের প্রাকৃতিক দৃশ্য</strong></p>
+        </div>
+        
+        <!-- Video 2 -->
+        <div class="video-item">
+          <video controls width="100%" poster="river.jpg">
+            <source src="video2.mp4" type="video/mp4">
+            আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
+          </video>
+          <p><strong>সোনাজন নদীর তীর</strong></p>
+        </div>
+        
+        <!-- Video 3 -->
+        <div class="video-item">
+          <video controls width="100%" poster="mosque.jpg">
+            <source src="video3.mp4" type="video/mp4">
+            আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
+          </video>
+          <p><strong>মসজিদের আদর্শ দৃশ্য</strong></p>
+        </div>
+        
+        <!-- Video 4 -->
+        <div class="video-item">
+          <video controls width="100%" poster="school.jpg">
+            <source src="video4.mp4" type="video/mp4">
+            আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
+          </video>
+          <p><strong>বিদ্যালয়ের পরিবেশ</strong></p>
+        </div>
+      </div>
+      
+      <p style="text-align:center; margin-top:20px; color:#666; font-style:italic;">
+        💡 আরও ভিডিও যোগ করতে এই HTML-এ নতুন <strong>&lt;div class="video-item"&gt;</strong> যোগ করুন।
+      </p>
+    </div>
+
+    <!-- ===== NEWS DETAILS MODAL ===== -->
+    <div class="news-modal" id="newsModal">
+      <div class="news-modal-content">
+        <button class="news-modal-close" onclick="closeNewsModal()">&times;</button>
+        
+        <div class="news-modal-header">
+          <h2>ইস্টবেঙ্গল ৪-১ ব্যবধানে মোহনবাগানকে উড়িয়ে ১৭তম ডুরান্ড কাপ জিতল</h2>
+          <div class="news-modal-meta">
+            <span>📅 ২৪ আগস্ট ২০২৬, সন্ধ্যা ৭:৩০ বিএসটি</span>
+            <span>✍️ মোহাম্মদ হোসেন শেখ</span>
+          </div>
+        </div>
+        
+        <div class="news-modal-body">
+          <img src="sport.jpg" alt="East Bengal Durand Cup Victory" style="width:100%; border-radius:12px; margin:10px 0;">
+          
+          <p style="font-size:1.1rem; font-weight:600; color:#1a3a4a;">
+            এডমন্ড লালরিন্ডিকার প্রথমার্ধের হ্যাটট্রিকে ইস্টবেঙ্গলের ঐতিহাসিক জয়
+          </p>
+          
+          <p>
+            <strong>ইস্টবেঙ্গল</strong> মোহনবাগান সুপার জায়ান্টকে ৪-১ গোলে হারিয়ে তাদের <strong>১৭তম ডুরান্ড কাপ</strong> শিরোপা জিতেছে। 
+            এই জয়ের মাধ্যমে তারা টুর্নামেন্টের ১৩৯ বছরের ইতিহাসে সবচেয়ে সফল দল হিসেবে মোহনবাগানের সমকক্ষ হয়ে উঠল।
+          </p>
+          
+          <p>
+            প্রথমার্ধে মোহনবাগানের কাছে বল দখল ও শটের সংখ্যা বেশি ছিল, কিন্তু শেষ পর্যন্ত তারা ইস্টবেঙ্গলের কাছে ৪-১ গোলে পিছিয়ে ছিল। 
+            দ্বিতীয়ার্ধে কোনো গোল না হলেও, বাগানের বল দখল বেশি থাকা সত্ত্বেও গোলের ভালো সুযোগ তৈরি করে ইস্টবেঙ্গলই এবং ফাইনালে তারা ৪-১ গোলের বড় জয় পায়।
+          </p>
+          
+          <div style="background:#f0f7fb; padding:15px 20px; border-radius:12px; margin:15px 0; border-left:4px solid #e74c3c;">
+            <h4 style="color:#1a3a4a; margin-bottom:5px;">⚽ গোল সংক্ষেপ:</h4>
+            <ul style="margin-left:20px;">
+              <li><strong>ইস্টবেঙ্গল:</strong> বিপিন সিং (১০'), এডমন্ড লালরিন্ডিকা (১২', ২২', ৪৪')</li>
+              <li><strong>মোহনবাগান:</strong> ম্যানভির সিং (৩৩')</li>
+            </ul>
+          </div>
+          
+          <p>
+            শুরুর দিকে বাগান আক্রমণাত্মক মনোভাব দেখালেও, ১০তম মিনিটের পর দুই মিনিটের ব্যবধানে দুই গোল করে ইস্টবেঙ্গল ম্যাচের মোড় ঘুরিয়ে দেয়। 
+            শেষ পর্যন্ত এই বড় জয়েই ইস্টবেঙ্গল নিশ্চিত করে তাদের <strong>১৭তম ডুরান্ড কাপ</strong> শিরোপা।
+          </p>
+          
+          <p style="color:#666; font-style:italic; margin-top:20px;">
+            🔴 ইস্টবেঙ্গল এখন ডুরান্ড কাপের ইতিহাসে মোহনবাগানের সাথে যৌথভাবে সবচেয়ে সফল দল (১৭টি শিরোপা)।
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== IMAGE PREVIEW MODAL ===== -->
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <img id="modalImage" src="" alt="Preview">
+      <p class="modal-caption" id="modalCaption"></p>
+      <a id="modalDownload" href="#" download class="modal-download">⬇️ Download Image</a>
+    </div>
   </div>
 
   <footer>
@@ -603,19 +994,16 @@
 
   <script>
     (function() {
-      // ===== HEADER IMAGE SLIDER =====
+      // ===== HEADER SLIDER =====
       const sliderImages = document.querySelectorAll('.header-slider img');
       let currentSlide = 0;
       const totalSlides = sliderImages.length;
-
       function nextSlide() {
         sliderImages.forEach(img => img.classList.remove('active'));
         currentSlide = (currentSlide + 1) % totalSlides;
         sliderImages[currentSlide].classList.add('active');
       }
-      if (totalSlides > 1) {
-        setInterval(nextSlide, 4000);
-      }
+      if (totalSlides > 1) setInterval(nextSlide, 4000);
 
       // ===== PAGE NAVIGATION =====
       const navLinks = document.querySelectorAll('nav a[data-page]');
@@ -624,7 +1012,8 @@
         about: document.getElementById('page-about'),
         gallery: document.getElementById('page-gallery'),
         contact: document.getElementById('page-contact'),
-        news: document.getElementById('page-news')
+        news: document.getElementById('page-news'),
+        notice: document.getElementById('page-notice'),
         video: document.getElementById('page-video')
       };
 
@@ -633,7 +1022,6 @@
           if (pages[key]) pages[key].classList.add('hidden');
         });
         if (pages[pageId]) pages[pageId].classList.remove('hidden');
-
         navLinks.forEach(link => {
           link.classList.remove('active');
           if (link.dataset.page === pageId) link.classList.add('active');
@@ -672,38 +1060,94 @@
       window.addEventListener('hashchange', handleHash);
       handleHash();
 
+      // ===== GALLERY IMAGE PREVIEW + DOWNLOAD =====
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      const modalCaption = document.getElementById('modalCaption');
+      const modalDownload = document.getElementById('modalDownload');
+      const modalClose = document.getElementById('modalClose');
+
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', function() {
+          const src = this.dataset.src;
+          const caption = this.dataset.caption || 'Chandrakota Village';
+          if (src) {
+            modalImg.src = src;
+            modalCaption.textContent = caption;
+            modalDownload.href = src;
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+
+      function closeModal() {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+      }
+
+      modalClose.addEventListener('click', closeModal);
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      // ===== NEWS MODAL =====
+      window.openNewsModal = function() {
+        document.getElementById('newsModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeNewsModal = function() {
+        document.getElementById('newsModal').classList.remove('show');
+        document.body.style.overflow = '';
+      };
+
+      document.getElementById('newsModal')?.addEventListener('click', function(e) {
+        if (e.target === this) closeNewsModal();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeNewsModal();
+      });
+
       // ===== COMMENT FORM =====
       const commentForm = document.getElementById('commentForm');
       const commentStatus = document.getElementById('commentStatus');
-
       if (commentForm) {
         commentForm.addEventListener('submit', function(e) {
           e.preventDefault();
           const name = document.getElementById('commentName').value.trim();
           const email = document.getElementById('commentEmail').value.trim();
           const message = document.getElementById('commentMessage').value.trim();
-
           if (!name || !email || !message) {
             alert('Please fill all fields.');
             return;
           }
-
           const subject = encodeURIComponent('Feedback from ' + name + ' - Chandrakota Village');
-          const body = encodeURIComponent(
-            'Name: ' + name + '\n' +
-            'Email: ' + email + '\n\n' +
-            'Message:\n' + message
-          );
-          const mailtoLink = 'mailto:mdhosainsk@gmail.com?subject=' + subject + '&body=' + body;
-          window.location.href = mailtoLink;
-
+          const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+          window.location.href = 'mailto:mdhosainsk@gmail.com?subject=' + subject + '&body=' + body;
           commentStatus.classList.add('show');
           commentStatus.innerHTML = '✅ Thank you, ' + name + '! Your message has been sent to <strong>mdhosainsk@gmail.com</strong>';
           commentForm.reset();
+          setTimeout(() => commentStatus.classList.remove('show'), 10000);
+        });
+      }
 
-          setTimeout(() => {
-            commentStatus.classList.remove('show');
-          }, 10000);
+      // ===== PDF VIEWER FALLBACK =====
+      const pdfViewer = document.getElementById('pdfViewer');
+      if (pdfViewer) {
+        pdfViewer.addEventListener('error', function() {
+          this.style.display = 'none';
+          const msg = document.createElement('p');
+          msg.style.color = '#e74c3c';
+          msg.style.padding = '20px';
+          msg.style.background = '#fde8e8';
+          msg.style.borderRadius = '12px';
+          msg.innerHTML = '⚠️ PDF প্রদর্শন করা সম্ভব হচ্ছে না। দয়া করে ডাউনলোড বাটনে ক্লিক করুন।';
+          this.parentNode.insertBefore(msg, this.nextSibling);
         });
       }
     })();
