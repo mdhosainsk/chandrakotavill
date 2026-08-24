@@ -582,6 +582,84 @@
       animation: fadeIn 0.4s ease;
     }
 
+    /* ===== নামাজের সূচি - আপনার দেওয়া কোড ===== */
+    .namaz-container {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      border: 2px solid #fdbb2d;
+    }
+    .namaz-container header h1 { 
+      font-size: 24px; 
+      margin: 0; 
+      color: #fdbb2d; 
+      text-transform: uppercase; 
+    }
+    .namaz-container header p { 
+      font-size: 13px; 
+      color: #ddd; 
+      margin: 5px 0; 
+    }
+    .namaz-clock-section { 
+      margin: 15px 0; 
+      padding: 10px; 
+      background: rgba(255,255,255,0.1); 
+      border-radius: 10px; 
+    }
+    .namaz-digital-clock { 
+      font-size: 45px; 
+      font-weight: bold; 
+      color: #00ff88; 
+      text-shadow: 2px 2px 10px #000; 
+    }
+    .namaz-next-prayer-box {
+      background: #ffc107;
+      color: #000;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
+      font-weight: bold;
+      font-size: 18px;
+      animation: namazPulse 2s infinite;
+    }
+    @keyframes namazPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+    .namaz-dates { font-size: 14px; margin-bottom: 10px; color: #ddd; }
+    .namaz-table {
+      width: 100%; 
+      border-collapse: collapse; 
+      margin-top: 10px; 
+    }
+    .namaz-table th { 
+      border-bottom: 2px solid #fdbb2d; 
+      padding: 8px; 
+      color: #fdbb2d; 
+    }
+    .namaz-table td { 
+      padding: 10px; 
+      border-bottom: 1px solid #333; 
+      font-size: 16px; 
+      color: white; 
+    }
+    .namaz-table .highlight { 
+      color: #00d2ff; 
+      font-weight: bold; 
+    }
+    .namaz-footer { 
+      margin-top: 20px; 
+      font-size: 11px; 
+      color: #aaa; 
+      line-height: 1.5; 
+    }
+
     /* ===== FOOTER ===== */
     footer {
       background: #1a2c3d;
@@ -606,6 +684,9 @@
       .news-modal-content { padding: 20px 18px; }
       .news-modal-header h2 { font-size: 1.4rem; }
       .news-modal-close { font-size: 1.8rem; }
+      .namaz-container { padding: 15px; }
+      .namaz-digital-clock { font-size: 32px; }
+      .namaz-container header h1 { font-size: 18px; }
     }
   </style>
 </head>
@@ -638,6 +719,7 @@
       <li><a href="#" data-page="news">News</a></li>
       <li><a href="#" data-page="notice">Notice</a></li>
       <li><a href="#" data-page="video">Video</a></li>
+      <li><a href="#" data-page="namaz">নামাজের সূচি</a></li>
     </ul>
   </nav>
 
@@ -648,7 +730,7 @@
         <h2>Discover Chandrakota: A Serene Village</h2>
         <p>Welcome to the official website of Chandrakota, a serene and beautiful village nestled in the Katwa PS area of Purba Bardhaman District, West Bengal, India.</p>
         <p>Chandrakota is uniquely blessed by the presence of the small but significant Sonajan River, flowing gracefully along the eastern side of our village.</p>
-        <img src="river2.jpg" alt="Sonajan River" class="river-image">
+        <img src="river.jpg" alt="Sonajan River" class="river-image">
         <p class="image-description">Sonajan River flowing by Chandrakota.</p>
       </section>
       <section>
@@ -687,7 +769,7 @@
       <section>
         <h2>Education</h2>
         <div class="subsection-title">CHANDRAKOTA FP SCHOOL</div>
-        <img src="school1.jpg" alt="Chandrakota FP School" class="place-image">
+        <img src="school.jpg" alt="Chandrakota FP School" class="place-image">
         <p class="image-description">Chandrakota FP School: Established in 1955.</p>
         <ul>
           <li>Established in 1955.</li>
@@ -753,11 +835,11 @@
         </div>
         <div class="gallery-item" data-src="math5.jpg" data-caption="Math 5">
           <img src="math5.jpg" alt="Math 5">
-          <p> খুব সুন্দর একটা প্রাকৃতিক দৃশ্য </p>
+          <p>Math 5</p>
         </div>
         <div class="gallery-item" data-src="math6.jpg" data-caption="Math 6">
           <img src="math6.jpg" alt="Math 6">
-          <p>  সবুজ মাঠের খুব সুন্দর একটা প্রাকৃতিক দৃশ্</p>
+          <p>Math 6</p>
         </div>
       </div>
     </div>
@@ -785,7 +867,7 @@
           <div class="news-badge">🔴 LIVE</div>
           <h4>ইস্টবেঙ্গল ৪-১ ব্যবধানে মোহনবাগানকে উড়িয়ে ১৭তম ডুরান্ড কাপ জিতল, রেকর্ডে সমতা</h4>
           <div class="meta">📅 ২৪ আগস্ট ২০২৬, সন্ধ্যা ৭:৩০ বিএসটি • ✍️ মোহাম্মদ হোসেন শেখ</div>
-          <img src="pic1.png" alt="East Bengal Durand Cup Victory" style="width:100%; max-width:100%; border-radius:12px; margin:10px 0;">
+          <img src="sport.jpg" alt="East Bengal Durand Cup Victory" style="width:100%; max-width:100%; border-radius:12px; margin:10px 0;">
           <p class="news-summary">
             ইস্টবেঙ্গল মোহনবাগান সুপার জায়ান্টকে ৪-১ গোলে হারিয়ে তাদের ১৭তম ডুরান্ড কাপ শিরোপা জিতেছে। 
             এডমন্ড লালরিন্ডিকার প্রথমার্ধের হ্যাটট্রিকে এই ঐতিহাসিক জয়।
@@ -843,14 +925,13 @@
       <p>Stay informed about the latest announcements and important updates from Chandrakota Gram Panchayat.</p>
       
       <div class="notice-box">
-        <h3>📄 PAN CARD FORM</h3>
+        <h3>📄 Current Notice</h3>
         <p><strong>Issue Date:</strong> 23 August 2026</p>
         <p><strong>Subject:</strong> Important Announcement for All Residents</p>
         
         <!-- PDF Viewer -->
-        <iframe src="PAN-Forms-93.pdf" class="pdf-viewer" id="pdfViewer"></iframe>
+        <iframe src="current notice.pdf" class="pdf-viewer" id="pdfViewer"></iframe>
         <p style="font-size:0.9rem; color:#666; margin:8px 0;">
-          
           ⚠️ PDF দৃশ্যমান না হলে নিচের ডাউনলোড বাটনে ক্লিক করুন।
         </p>
         
@@ -862,40 +943,13 @@
         <div style="margin-top:20px; padding:15px; background:#e8f4f8; border-radius:12px; text-align:left;">
           <h4 style="color:#1a3a4a;">📌 Notice Details:</h4>
           <ul style="margin-left:20px;">
-            <li><strong>বিষয়:</strong> NEW PAN CARD FORM</li>
-            <li><strong>তারিখ:</strong> ২৩ আগস্ট ২০২৬</li> 
-            <li><strong>জারিকারী:</strong> চন্দ্রকোটা গ্রাম </li>
-            <li><strong>বর্ণনা:</strong> গ্রামের সকল বাসিন্দাদের জানানো যাচ্ছে যে,নতুন প্যান কার্ড করার জন্য যোগাযোগ করুন।</li>
+            <li><strong>বিষয়:</strong> গ্রামের উন্নয়ন প্রকল্পের ঘোষণা</li>
+            <li><strong>তারিখ:</strong> ২৩ আগস্ট ২০২৬</li>
+            <li><strong>জারিকারী:</strong> চন্দ্রকোটা গ্রাম পঞ্চায়েত</li>
+            <li><strong>বর্ণনা:</strong> গ্রামের সকল বাসিন্দাদের জানানো যাচ্ছে যে, আগামী ১৫ সেপ্টেম্বর ২০২৬ তারিখে একটি বিশেষ সভা অনুষ্ঠিত হবে।</li>
           </ul>
         </div>
       </div>
-       <div class="notice-box">
-        <h3>📄 ১৯৯৫ সালের  ভোটার তালিকা </h3>
-        <p><strong>Issue Date:</strong> 23 August 2026</p>
-        <p><strong>Subject:</strong> Important Announcement for All Residents</p>
-        
-        <!-- PDF Viewer -->
-        <iframe src="1995 ELECTORAL.pdf" class="pdf-viewer" id="pdfViewer"></iframe>
-        <p style="font-size:0.9rem; color:#666; margin:8px 0;">
-          
-          ⚠️ PDF দৃশ্যমান না হলে নিচের ডাউনলোড বাটনে ক্লিক করুন।
-        </p>
-        
-        <!-- Download Button -->
-        <a href="current notice.pdf" download class="btn-download">
-          ⬇️ Download Notice (PDF)
-        </a>
-        
-        <div style="margin-top:20px; padding:15px; background:#e8f4f8; border-radius:12px; text-align:left;">
-          <h4 style="color:#1a3a4a;">📌 Notice Details:</h4>
-          <ul style="margin-left:20px;">
-            <li><strong>বিষয়:</strong> গ্রামের ভোটার তালিকা </li>
-            <li><strong>তারিখ:</strong> ২৩ আগস্ট ২০২৬</li>
-            <li><strong>জারিকারী:</strong> চন্দ্রকোটা গ্রাম </li>
-            <li><strong>বর্ণনা:</strong> গ্রামের সকল বাসিন্দাদের জানানো যাচ্ছে যে, ১৯৯৫ সালের ভোটার তালিকা ।</li>
-          </ul>
-        </div>
-
       
       <div style="background:#f9f9f9; padding:20px; border-radius:12px; margin-top:20px;">
         <h3>📜 Previous Notices</h3>
@@ -1004,6 +1058,47 @@
         </div>
       </div>
     </div>
+
+    <!-- ===== নামাজের সূচি (আপনার দেওয়া সম্পূর্ণ কোড) ===== -->
+    <div id="page-namaz" class="page hidden">
+      <div class="namaz-container">
+        <header>
+          <h1> চন্দ্রকোটা মসজিদ বায়তুল মুক্কারম (জামে মসজিদ) </h1>
+          <p> চন্দ্রকোটা : কাটোয়াঃ পূর্ব বর্ধমান: ৭১৩১৫০ </p>
+        </header>
+
+        <div class="namaz-clock-section">
+          <div class="namaz-digital-clock" id="namazClock">00:00:00 AM</div>
+          <div id="namazDayName">লোড হচ্ছে...</div>
+          <div class="namaz-dates">
+            <span id="namazGregorian"></span> | <span id="namazHijri"></span>
+          </div>
+        </div>
+
+        <!-- পরবর্তী নামাজের সময় ক্যালকুলেশন -->
+        <div class="namaz-next-prayer-box" id="namazNextPrayerInfo">
+          পরবর্তী নামাজ: লোড হচ্ছে...
+        </div>
+
+        <table class="namaz-table">
+          <thead>
+            <tr>
+              <th>নামাজ</th>
+              <th>আজান</th>
+              <th>জামাত</th>
+            </tr>
+          </thead>
+          <tbody id="namazPrayerTable">
+            <!-- জাভাস্ক্রিপ্ট দিয়ে ডাটা আসবে -->
+          </tbody>
+        </table>
+
+        <div class="namaz-footer">
+          Website Design by: <strong>Md Hosain Sk</strong><br>
+          PH: 8768693661 | Email: mdhosainsk@gmail.com
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- ===== IMAGE PREVIEW MODAL ===== -->
@@ -1042,7 +1137,8 @@
         contact: document.getElementById('page-contact'),
         news: document.getElementById('page-news'),
         notice: document.getElementById('page-notice'),
-        video: document.getElementById('page-video')
+        video: document.getElementById('page-video'),
+        namaz: document.getElementById('page-namaz')
       };
 
       function showPage(pageId) {
@@ -1178,6 +1274,79 @@
           this.parentNode.insertBefore(msg, this.nextSibling);
         });
       }
+
+      // ===== নামাজের সূচি (আপনার দেওয়া সম্পূর্ণ JavaScript) =====
+      const namazPrayerTimes = [
+        { name: 'ফজর (Fajr)', azan: '04:00 AM', namaz: '04:40 AM', sortTime: '04:52' },
+        { name: 'জোহর (juhr)', azan: '01:00 PM', namaz: '01:30 PM', sortTime: '13:30' },
+        { name: 'আসর (Asr)', azan: '04:20 PM', namaz: '04:35 PM', sortTime: '16:25' },
+        { name: 'মাগরিব (Maghrib)', azan: '06:08 PM', namaz: '06:10 PM', sortTime: '17:55' },
+        { name: 'ইশা (Isha)', azan: '07:50 PM', namaz: '08:10 PM', sortTime: '20:00' }
+      ];
+
+      function updateNamazDashboard() {
+        const now = new Date();
+        
+        // ঘড়ি আপডেট
+        document.getElementById('namazClock').innerText = now.toLocaleTimeString('en-US', { 
+          hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true 
+        });
+        document.getElementById('namazDayName').innerText = now.toLocaleDateString('bn-IN', { weekday: 'long' });
+        document.getElementById('namazGregorian').innerText = now.toLocaleDateString('bn-IN');
+
+        // টেবিল ডাটা রেন্ডার
+        let tableHTML = "";
+        namazPrayerTimes.forEach(p => {
+          tableHTML += `<tr><td>${p.name}</td><td class="highlight">${p.azan}</td><td>${p.namaz}</td></tr>`;
+        });
+        document.getElementById('namazPrayerTable').innerHTML = tableHTML;
+
+        // পরবর্তী নামাজের কাউন্টডাউন লজিক
+        const currentTimeInMinutes = now.getHours() * 60 + now.getMinutes();
+        let nextPrayer = null;
+
+        for (let p of namazPrayerTimes) {
+          let [h, m] = p.sortTime.split(':');
+          let pTimeInMinutes = parseInt(h) * 60 + parseInt(m);
+          
+          if (pTimeInMinutes > currentTimeInMinutes) {
+            nextPrayer = { ...p, remaining: pTimeInMinutes - currentTimeInMinutes };
+            break;
+          }
+        }
+
+        if (!nextPrayer) {
+          let [h, m] = namazPrayerTimes[0].sortTime.split(':');
+          let fTime = parseInt(h) * 60 + parseInt(m);
+          nextPrayer = { ...namazPrayerTimes[0], remaining: (1440 - currentTimeInMinutes) + fTime };
+        }
+
+        let hours = Math.floor(nextPrayer.remaining / 60);
+        let mins = nextPrayer.remaining % 60;
+        let timeString = hours > 0 ? `${hours} ঘণ্টা ${mins} মিনিট` : `${mins} মিনিট`;
+        
+        document.getElementById('namazNextPrayerInfo').innerHTML = 
+          `পরবর্তী নামাজ: ${nextPrayer.name}<br><small>বাকি আছে: ${timeString}</small>`;
+      }
+
+      // হিজরি তারিখের জন্য API কল
+      async function getNamazHijri() {
+        try {
+          const res = await fetch('https://api.aladhan.com/v1/gToH');
+          const data = await res.json();
+          if (data && data.data) {
+            document.getElementById('namazHijri').innerText = 
+              data.data.hijri.day + " " + data.data.hijri.month.en + " " + data.data.hijri.year + " হিজরি";
+          }
+        } catch(e) { 
+          document.getElementById('namazHijri').innerText = "Hijri 1448"; 
+        }
+      }
+
+      setInterval(updateNamazDashboard, 1000);
+      updateNamazDashboard();
+      getNamazHijri();
+      
     })();
   </script>
 </body>
