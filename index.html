@@ -256,6 +256,39 @@
       margin: 10px 0;
     }
     .news-grid { display: flex; flex-direction: column; gap: 18px; }
+    /* ===== VIDEO ===== */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin: 20px 0;
+}
+.video-item {
+  background: #f8fafc;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+}
+.video-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+.video-item video {
+  width: 100%;
+  display: block;
+  background: #000;
+  border-radius: 16px 16px 0 0;
+  max-height: 300px;
+  object-fit: cover;
+}
+.video-item p {
+  padding: 12px 16px;
+  margin: 0;
+  text-align: center;
+  color: #2f4050;
+  font-weight: 500;
+      }
 
     /* ===== COMMENT SECTION ===== */
     .comment-box {
@@ -355,6 +388,8 @@
       <img src="school.jpg" alt="School">
       <img src="school1.jpg" alt="School 1">
       <img src="river2.jpg" alt="River 2">
+      <img src="math5.jpg" alt="river4">
+      <img src="math6.jpg" alt="math4">
     </div>
     <div class="header-overlay"></div>
     <div class="header-content">
@@ -371,6 +406,7 @@
       <li><a href="#" data-page="gallery">Gallery</a></li>
       <li><a href="#" data-page="contact">Contact</a></li>
       <li><a href="#" data-page="news">News</a></li>
+      <li><a href="#" data-page="video">Video</a></li>
     </ul>
   </nav>
 
@@ -428,7 +464,7 @@
           <li>Cornerstone of formal education for generations.</li>
         </ul>
         <h3>Literacy Rate</h3>
-        <p>Current literacy rate: <strong>45%</strong> – significant improvement from the past.</p>
+        <p>Current literacy rate: <strong>~70%</strong> – significant improvement from the past.</p>
       </section>
     </div>
 
@@ -495,6 +531,53 @@
           <img src="sport.jpg" alt="Cricket" style="width:100%; max-width:400px; border-radius:12px;">
           <p>Our village cricket team emerged victorious in the Katwa Block Inter-Village Tournament. The team was felicitated by the village elders and residents. Congratulations to all the players!</p>
         </div>
+        <!-- ===== VIDEO ===== -->
+<div id="page-video" class="page hidden">
+  <h2>🎥 Chandrakota Village Videos</h2>
+  <p>Explore the beauty of our village through videos.</p>
+  
+  <div class="video-grid">
+    <!-- Video 1 -->
+    <div class="video-item">
+      <video controls width="100%" poster="vill.jpg">
+        <source src="video1.mp4" type="video/mp4">
+        আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
+      </video>
+      <p><strong>গ্রামের প্রাকৃতিক দৃশ্য</strong></p>
+    </div>
+    
+    <!-- Video 2 -->
+    <div class="video-item">
+      <video controls width="100%" poster="river.jpg">
+        <source src="video2.mp4" type="video/mp4">
+        আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
+      </video>
+      <p><strong>সোনাজন নদীর তীর</strong></p>
+    </div>
+    
+    <!-- Video 3 -->
+    <div class="video-item">
+      <video controls width="100%" poster="mosque.jpg">
+        <source src="video3.mp4" type="video/mp4">
+        আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
+      </video>
+      <p><strong>মসজিদের আদর্শ দৃশ্য</strong></p>
+    </div>
+    
+    <!-- Video 4 -->
+    <div class="video-item">
+      <video controls width="100%" poster="school.jpg">
+        <source src="video4.mp4" type="video/mp4">
+        আপনার ব্রাউজার ভিডিও সাপোর্ট করে না।
+      </video>
+      <p><strong>বিদ্যালয়ের পরিবেশ</strong></p>
+    </div>
+  </div>
+  
+  <p style="text-align:center; margin-top:20px; color:#666; font-style:italic;">
+    💡 আরও ভিডিও যোগ করতে এই HTML-এ নতুন <strong>&lt;div class="video-item"&gt;</strong> যোগ করুন।
+  </p>
+</div>
       </div>
 
       <!-- ===== COMMENT / FEEDBACK ===== -->
@@ -542,6 +625,7 @@
         gallery: document.getElementById('page-gallery'),
         contact: document.getElementById('page-contact'),
         news: document.getElementById('page-news')
+        video: document.getElementById('page-video')
       };
 
       function showPage(pageId) {
