@@ -584,24 +584,26 @@
 
     /* ===== নামাজের সূচি - আপনার দেওয়া কোড ===== */
     .namaz-container {
-      background: rgba(255, 0, 0, 0.85);
+      background: rgba(25, 0, 0, 0.85);
       padding: 25px;
       border-radius: 20px;
-      text-align: justify;
-      box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+      text-align: center;
+      box-shadow: 0 10px 50px rgba(0,0.85,0,0.5);
       width: 100%;
-      max-width: 420px;
+      max-width: 920px;
       margin: 0 auto;
       border: 2px solid #fdbb2d;
     }
     .namaz-container header h1 { 
       font-size: 24px; 
       margin: 0; 
-      color: #fdbb2d; 
+      color: yellow; 
       text-transform: uppercase; 
     }
     .namaz-container header p { 
-      font-size: 13px; 
+      font-size: 16px; 
+      text-align:bottom;
+      font-weight:bold;
       color: #ddd; 
       margin: 5px 0; 
     }
@@ -930,7 +932,7 @@
         <p><strong>Subject:</strong> Important Announcement for All Residents</p>
         
         <!-- PDF Viewer -->
-        <iframe src="current notice.pdf" class="pdf-viewer" id="pdfViewer"></iframe>
+        <iframe src="Electroll roll 1995.pdf" class="pdf-viewer" id="pdfViewer"></iframe>
         <p style="font-size:0.9rem; color:#666; margin:8px 0;">
           ⚠️ PDF দৃশ্যমান না হলে নিচের ডাউনলোড বাটনে ক্লিক করুন।
         </p>
@@ -945,7 +947,7 @@
           <ul style="margin-left:20px;">
             <li><strong>বিষয়:</strong> গ্রামের উন্নয়ন প্রকল্পের ঘোষণা</li>
             <li><strong>তারিখ:</strong> ২৩ আগস্ট ২০২৬</li>
-            <li><strong>জারিকারী:</strong> চন্দ্রকোটা গ্রাম পঞ্চায়েত</li>
+            <li><strong>জারিকারী:</strong> চন্দ্রকোটা গ্রাম </li>
             <li><strong>বর্ণনা:</strong> গ্রামের সকল বাসিন্দাদের জানানো যাচ্ছে যে, আগামী ১৫ সেপ্টেম্বর ২০২৬ তারিখে একটি বিশেষ সভা অনুষ্ঠিত হবে।</li>
           </ul>
         </div>
@@ -1281,7 +1283,7 @@
         { name: 'জোহর (juhr)', azan: '01:00 PM', namaz: '01:30 PM', sortTime: '13:30' },
         { name: 'আসর (Asr)', azan: '04:20 PM', namaz: '04:35 PM', sortTime: '16:25' },
         { name: 'মাগরিব (Maghrib)', azan: '06:08 PM', namaz: '06:10 PM', sortTime: '17:55' },
-        { name: 'ইশা (Isha)', azan: '07:50 PM', namaz: '08:10 PM', sortTime: '20:00' }
+        { name: 'ইশা (Isha)', azan: '07:50 PM', namaz: '08:10 PM', sortTime: '20:10' }
       ];
 
       function updateNamazDashboard() {
