@@ -722,7 +722,7 @@
   background: rgba(0, 0, 0, 0.4); /* পেছনের হালকা ডার্ক ব্যাকগ্রাউন্ড */
   border: 1px solid #ffd700; /* হালকা গোল্ডেন বর্ডার */
   border-radius: 8px; /* কোণা ৮ পিক্সেল গোলাকার করবে */
-  padding: 10px 0; /* উপরে-নিচে ১০ পিক্সেল ফাঁকা জায়গা */
+  padding: 18px 0; /* উপরে-নিচে 18 পিক্সেল ফাঁকা জায়গা */
   margin-bottom: 15px; /* নিচের ঘড়ির সেকশন থেকে ১৫ পিক্সেল দূরত্বে রাখবে */
   box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* হালকা ছায়া ফেলবে */
 }
@@ -730,13 +730,13 @@
 .news-ticker-text {
   display: inline-block;
   white-space: nowrap; /* টেক্সট ভেঙে নিচের লাইনে যাবে না, এক লাইনে থাকবে */
-  font-size: 18px; /* লেখার ফন্ট সাইজ (বাড়াল বড় হবে, কমাল ছোট হবে) */
+  font-size: 26px; /* লেখার ফন্ট সাইজ (বাড়াল বড় হবে, কমাল ছোট হবে) */
   font-weight: bold; /* লেখা মোটা বা বোল্ড করবে */
   color: #ffd700; /* লেখার রঙ: উজ্জ্বল গোল্ডেন/হলুদ (#ffd700) */
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5); /* গ্লো এফেক্ট */
+  text-shadow: 1px 1px 0px #b8860b, 2px 2px 0px #996515, 3px 3px 5px rgba(0, 0, 0, 0.8); /* গ্লো এফেক্ট */
   
   /* এনিমেশন সেটআপ: বাম থেকে ডানে চলবে */
-  animation: runTextLeftToRight 15s linear infinite; 
+  animation: runTextRightToLeft 10s linear infinite; 
 }
 
 /* মাউস কার্সার লেখার ওপর রাখলে স্ক্রলিং সাময়িক থামবে */
@@ -745,12 +745,12 @@
 }
 
 /* বাম থেকে ডান দিকে যাওয়ার এনিমেশন লজিক */
-@keyframes runTextLeftToRight {
+@keyframes runTextRightToLeft {
   0% {
-    transform: translateX(-100%); /* স্ক্রিনের বাম পাশ থেকে বের হওয়া শুরু করবে */
+    transform: translateX(100%); /* স্ক্রিনের বাম পাশ থেকে বের হওয়া শুরু করবে */
   }
   100% {
-    transform: translateX(100%); /* ডান পাশে গিয়ে শেষ হবে */
+    transform: translateX(-100%); /* ডান পাশে গিয়ে শেষ হবে */
   }
 }
     /* ===== FOOTER ===== */
