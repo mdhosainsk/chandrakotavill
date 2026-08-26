@@ -656,10 +656,10 @@
 
 /* ৮. তারিখের সেকশন (Dates text) */
 .namaz-dates { 
-  font-size: 20px; /* তারিখের লেখার সাইজ ২০ পিক্সেল */
+  font-size: 28px; /* তারিখের লেখার সাইজ ২০ পিক্সেল */
   margin-bottom: 20px; /* নিচের টেবিল থেকে ২০ পিক্সেল দূরে রাখবে */
-  color: #f8fafc; /* লেখার রঙ: হালকা উজ্জ্বল সাদা (#f8fafc) */
-  font-weight: 500; /* লেখা মাঝারি সাইজের বোল্ড */
+  color:#ffd700; /* লেখার রঙ: হালকা উজ্জ্বল সাদা (#f8fafc) */
+  font-weight: 600; /* লেখা মাঝারি সাইজের বোল্ড */
 }
 
 /* ৯. পুরো নামাজের টেবিল (Prayer Table) */
@@ -715,7 +715,44 @@
   color: #94a3b8; /* লেখার রঙ: হালকা ধূসর/অ্যাশ কালার (#94a3b8) */
   line-height: 1.6; /* এক লাইনের সাথে অন্য লাইনের মাঝে ১.৬ গুণ স্পেস রাখবে */
 }
+/* ===== চলমান নোটিশ (Running News Ticker) স্টাইল ===== */
+.news-ticker-container {
+  width: 100%; /* পুরো বক্সের সমান চওড়া হবে */
+  overflow: hidden; /* টেক্সট বক্সের বাইরে গেলে তা লুকিয়ে রাখবে */
+  background: rgba(0, 0, 0, 0.4); /* পেছনের হালকা ডার্ক ব্যাকগ্রাউন্ড */
+  border: 1px solid #ffd700; /* হালকা গোল্ডেন বর্ডার */
+  border-radius: 8px; /* কোণা ৮ পিক্সেল গোলাকার করবে */
+  padding: 10px 0; /* উপরে-নিচে ১০ পিক্সেল ফাঁকা জায়গা */
+  margin-bottom: 15px; /* নিচের ঘড়ির সেকশন থেকে ১৫ পিক্সেল দূরত্বে রাখবে */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* হালকা ছায়া ফেলবে */
+}
 
+.news-ticker-text {
+  display: inline-block;
+  white-space: nowrap; /* টেক্সট ভেঙে নিচের লাইনে যাবে না, এক লাইনে থাকবে */
+  font-size: 18px; /* লেখার ফন্ট সাইজ (বাড়াল বড় হবে, কমাল ছোট হবে) */
+  font-weight: bold; /* লেখা মোটা বা বোল্ড করবে */
+  color: #ffd700; /* লেখার রঙ: উজ্জ্বল গোল্ডেন/হলুদ (#ffd700) */
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5); /* গ্লো এফেক্ট */
+  
+  /* এনিমেশন সেটআপ: বাম থেকে ডানে চলবে */
+  animation: runTextLeftToRight 15s linear infinite; 
+}
+
+/* মাউস কার্সার লেখার ওপর রাখলে স্ক্রলিং সাময়িক থামবে */
+.news-ticker-container:hover .news-ticker-text {
+  animation-play-state: paused;
+}
+
+/* বাম থেকে ডান দিকে যাওয়ার এনিমেশন লজিক */
+@keyframes runTextLeftToRight {
+  0% {
+    transform: translateX(-100%); /* স্ক্রিনের বাম পাশ থেকে বের হওয়া শুরু করবে */
+  }
+  100% {
+    transform: translateX(100%); /* ডান পাশে গিয়ে শেষ হবে */
+  }
+}
     /* ===== FOOTER ===== */
     footer {
       background: #1a2c3d;
@@ -1124,6 +1161,12 @@
           <br>চন্দ্রকোটা : কাটোয়াঃ পূর্ব বর্ধমান: ৭১৩১৫০ </h1>
         </header>
 
+       <!-- নিউজ চ্যানেলের মতো চলমান নোটিশ সেকশন -->
+<div class="news-ticker-container">
+  <div class="news-ticker-text" id="runningText">
+    "আসসালামু আলাইকুম" (اَلسَّلَامُ عَلَيْكُمْ) আপনাদের সকলকে আমার ওয়েবসাইটে স্বাগতম জানাই। প্রতিদিন খবর ও বিভিন্ন আপডেট পেতে আমার এই ওয়েবসাইটটিকে Follow করুন।
+  </div>
+</div>
         <div class="namaz-clock-section">
           <div class="namaz-digital-clock" id="namazClock">00:00:00 AM</div>
           <div id="namazDayName">লোড হচ্ছে...</div>
