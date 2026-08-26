@@ -592,7 +592,7 @@
   text-align: center; /* ভেতরের সব লেখা ও টেবিল মাঝখানে (Center) রাখবে */
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* বক্সের পেছনে ভাসমান ছায়া (Shadow) ফেলবে */
   width: 90%; /* স্ক্রিনের ৯০% জায়গা নেবে */
-  max-width: 1000px; /* সর্বোচ্চ ১০০০ পিক্সেল পর্যন্ত চওড়া হবে */
+  max-width: 1300px; /* সর্বোচ্চ ১০০০ পিক্সেল পর্যন্ত চওড়া হবে */
   margin: 30px auto; /* উপরে-নিচে 30px এবং ডানে-বামে নিজে থেকেই মাঝে বসবে */
   border: 2px solid #ffb703; /* চারপাশে ২ পিক্সেল মোটা গোল্ডেন বর্ডার দেবে */
   box-sizing: border-box; /* পেডিং ও বর্ডার যেন নির্দিষ্ট সাইজের বাইরে না যায় */
@@ -600,12 +600,13 @@
 
 /* ২. প্রধান শিরোনাম (Main Heading - H1) */
 .namaz-container header h1 { 
-  font-size: 34px; /* শিরোনামের লেখার আকার ৩৪ পিক্সেল */
+  font-size: 44px; /* শিরোনামের লেখার আকার ৩৪ পিক্সেল */
   margin: 0 0 10px 0; /* লেখার নিচে ১০ পিক্সেল ফাঁকা জায়গা রাখবে */
   color: #ffb703; /* লেখার রঙ: গোল্ডেন/হলুদ (#ffb703) */
   text-transform: uppercase; /* সব অক্ষর বড় হাতের (Capital Letter) করবে */
   letter-spacing: 1.5px; /* প্রতিটি অক্ষরের মাঝে ১.৫ পিক্সেল ফাঁক তৈরি করবে */
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* লেখার পেছনে হালকা কালো ছায়া ফেলবে */
+  text-shadow:1px 1px 0px #b8860b, 2px 2px 0px #996515, 3px 3px 5px rgba(0, 0, 0, 0.8); /* গ্লো এফেক্ট */
+   /* লেখার পেছনে হালকা কালো ছায়া ফেলবে */
 }
 
 /* ৩. সাব-টাইটেল বা ঠিকানার লেখা (Header Paragraph) */
@@ -960,7 +961,7 @@
         <div class="news-article featured-news" onclick="openNewsModal()">
           <div class="news-badge">🔴 LIVE</div>
           <h4>কলম্বো টেস্টে ভারতের ফলো-অনে শ্রীলঙ্কা ২২৯/৬, লিড ১৬ রানে</h4>
-          <div class="meta">📅 6 আগস্ট ২০২৬, • ✍️ মোহাম্মদ হোসেন শেখ</div>
+          <div class="meta">📅 26 আগস্ট ২০২৬, • ✍️ Md Hosain Sk</div>
           <img src="india.jpg" alt="East Bengal Durand Cup Victory" style="width:100%; max-width:100%; border-radius:12px; margin:10px 0;">
           <p class="news-summary">
             দিন ৪ শেষে শ্রীলঙ্কার লড়াইয়ে টিকে রয়েছে সোনাল দিনুশা, ভারতের বিপক্ষে ড্রয়ের আশা
@@ -1113,9 +1114,7 @@
         </div>
       </div>
       
-      <p style="text-align:center; margin-top:20px; color:#666; font-style:italic;">
-        💡 আরও ভিডিও যোগ করতে এই HTML-এ নতুন <strong>&lt;div class="video-item"&gt;</strong> যোগ করুন।
-      </p>
+      <p style="text-align:center; margin-top:20px; color:#666; font-style:italic;"> </p>
     </div>
 
     <!-- ===== NEWS DETAILS MODAL ===== -->
@@ -1222,8 +1221,8 @@
     <div id="page-namaz" class="page hidden">
       <div class="namaz-container">
         <header>
-          <h1> চন্দ্রকোটা মসজিদ বায়তুল মুক্কারম (জামে মসজিদ) <br>
-          <br>চন্দ্রকোটা : কাটোয়াঃ পূর্ব বর্ধমান: ৭১৩১৫০ </h1>
+          <h1> চন্দ্রকোটা মসজিদ বায়তুল মুক্কারম (জামে মসজিদ) </h1>
+          <p>চন্দ্রকোটা ** কাটোয়া ** পূর্ব বর্ধমান: ৭১৩১৫০ </p>
         </header>
 
        <!-- নিউজ চ্যানেলের মতো চলমান নোটিশ সেকশন -->
@@ -1283,7 +1282,7 @@
   </div>
 
   <footer>
-    <p>&copy; 2026 Chandrakota Village. All rights reserved. | Website by <a href="mailto:mdhosainsk@gmail.com">Md Hosain Sk</a></p>
+    <p>&copy; 2025 Chandrakota Village. All rights reserved. | Website by <a href="mailto:mdhosainsk@gmail.com">Md Hosain Sk</a></p>
   </footer>
 
   <script>
