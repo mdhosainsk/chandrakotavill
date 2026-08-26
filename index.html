@@ -590,7 +590,7 @@
       text-align: center;
       box-shadow: 0 10px 50px rgba(0,0.85,0,0.5);
       width: 100%;
-      max-width: 920px;
+      max-width: 1100px;
       margin: 0 auto;
       border: 2px solid #fdbb2d;
     }
@@ -601,10 +601,10 @@
       text-transform: uppercase; 
     }
     .namaz-container header p { 
-      font-size: 16px; 
+      font-size: 20px; 
       text-align:bottom;
       font-weight:bold;
-      color: #ddd; 
+      color:#ffffff; 
       margin: 5px 0; 
     }
     .namaz-clock-section { 
@@ -621,12 +621,12 @@
     }
     .namaz-next-prayer-box {
       background: #ffc107;
-      color: #000;
+      color: #de1dcb;
       padding: 10px;
       border-radius: 8px;
       margin: 10px 0;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 24px;
       animation: namazPulse 2s infinite;
     }
     @keyframes namazPulse {
@@ -641,15 +641,16 @@
       margin-top: 10px; 
     }
     .namaz-table th { 
-      border-bottom: 2px solid #fdbb2d; 
+      border-bottom: 2px solid ##0f7d29; 
       padding: 8px; 
       color: #fdbb2d; 
     }
     .namaz-table td { 
       padding: 10px; 
       border-bottom: 1px solid #333; 
-      font-size: 16px; 
+      font-size: 24px; 
       color: white; 
+      font-weight:bold
     }
     .namaz-table .highlight { 
       color: #00d2ff; 
@@ -1066,7 +1067,7 @@
       <div class="namaz-container">
         <header>
           <h1> চন্দ্রকোটা মসজিদ বায়তুল মুক্কারম (জামে মসজিদ) </h1>
-          <br><p> চন্দ্রকোটা : কাটোয়াঃ পূর্ব বর্ধমান: ৭১৩১৫০ </p>
+          <h2> চন্দ্রকোটা : কাটোয়াঃ পূর্ব বর্ধমান: ৭১৩১৫০ </h2>
         </header>
 
         <div class="namaz-clock-section">
@@ -1281,7 +1282,7 @@
       const namazPrayerTimes = [
         { name: 'ফজর (Fajr)', azan: '04:00 AM', namaz: '04:40 AM', sortTime: '04:52' },
         { name: 'জোহর (juhr)', azan: '01:00 PM', namaz: '01:30 PM', sortTime: '13:30' },
-        { name: 'আসর (Asr)', azan: '04:20 PM', namaz: '04:35 PM', sortTime: '16:25' },
+        { name: 'আসর (Asr)', azan: '04:15 PM', namaz: '04:30 PM', sortTime: '16:25' },
         { name: 'মাগরিব (Maghrib)', azan: '06:08 PM', namaz: '06:10 PM', sortTime: '17:55' },
         { name: 'ইশা (Isha)', azan: '07:50 PM', namaz: '08:10 PM', sortTime: '20:10' }
       ];
