@@ -582,86 +582,139 @@
       animation: fadeIn 0.4s ease;
     }
 
-    /* ===== নামাজের সূচি - আপনার দেওয়া কোড ===== */
-    .namaz-container {
-      background: #a3ccd1;
-      padding: 25px;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 10px 50px rgba(0,0.85,0,0.5);
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      border: 2px solid #fdbb2d;
-    }
-    .namaz-container header h1 { 
-      font-size: 40px; 
-      margin: 0; 
-      color: yellow; 
-      text-transform: uppercase; 
-    }
-    .namaz-container header p { 
-      font-size: 20px; 
-      text-align:bottom;
-      font-weight:bold;
-      color:#ffffff; 
-      margin: 5px 0; 
-    }
-    .namaz-clock-section { 
-      margin: 15px 0; 
-      padding: 10px; 
-      background:#cda0d9;
-      border-radius: 10px; 
-    }
-    .namaz-digital-clock { 
-      font-size: 45px; 
-      font-weight: bold; 
-      color: #9ad914; 
-      text-shadow: 2px 2px 10px #000; 
-    }
-    .namaz-next-prayer-box {
-      background: #ffc107;
-      color: #de1dcb;
-      padding: 10px;
-      border-radius: 8px;
-      margin: 10px 0;
-      font-weight: bold;
-      font-size: 36px;
-      animation: namazPulse 2s infinite;
-    }
-    @keyframes namazPulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.02); }
-      100% { transform: scale(1); }
-    }
-    .namaz-dates { font-size: 28px; margin-bottom: 10px; color: #fff; }
-    .namaz-table {
-      width: 100%; 
-      border-collapse: collapse; 
-      margin-top: 10px; 
-    }
-    .namaz-table th { 
-      border-bottom: 2px solid ##0f7d29; 
-      padding: 8px; 
-      color: #fdbb2d; 
-    }
-    .namaz-table td { 
-      padding: 10px; 
-      border-bottom: 1px solid #1A1A1A; 
-      font-size: 24px; 
-      color: white; 
-      font-weight:bold
-    }
-    .namaz-table .highlight { 
-      color: #00d2ff; 
-      font-weight: bold; 
-    }
-    .namaz-footer { 
-      margin-top: 20px; 
-      font-size: 11px; 
-      color: yellow; 
-      line-height: 1.5; 
-    }
+  /* ===== নামাজের সূচি - Modern & Comprehensive CSS ===== */
+
+/* ১. মূল কার্ড বা পুরো বক্সের স্টাইল */
+.namaz-container {
+  background: linear-gradient(145deg, #1b2a4a, #0f172a); /* ব্যাকগ্রাউন্ড কালার: ডার্ক ব্লু গ্র্যাডিয়েন্ট */
+  padding: 35px 25px; /* ভেতর থেকে জায়গা ছাড়বে: উপরে-নিচে 35px, ডানে-বামে 25px */
+  border-radius: 24px; /* বক্সের ৪টি কোণা ২৪ পিক্সেল গোলাকার করবে */
+  text-align: center; /* ভেতরের সব লেখা ও টেবিল মাঝখানে (Center) রাখবে */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* বক্সের পেছনে ভাসমান ছায়া (Shadow) ফেলবে */
+  width: 90%; /* স্ক্রিনের ৯০% জায়গা নেবে */
+  max-width: 1000px; /* সর্বোচ্চ ১০০০ পিক্সেল পর্যন্ত চওড়া হবে */
+  margin: 30px auto; /* উপরে-নিচে 30px এবং ডানে-বামে নিজে থেকেই মাঝে বসবে */
+  border: 2px solid #ffb703; /* চারপাশে ২ পিক্সেল মোটা গোল্ডেন বর্ডার দেবে */
+  box-sizing: border-box; /* পেডিং ও বর্ডার যেন নির্দিষ্ট সাইজের বাইরে না যায় */
+}
+
+/* ২. প্রধান শিরোনাম (Main Heading - H1) */
+.namaz-container header h1 { 
+  font-size: 34px; /* শিরোনামের লেখার আকার ৩৪ পিক্সেল */
+  margin: 0 0 10px 0; /* লেখার নিচে ১০ পিক্সেল ফাঁকা জায়গা রাখবে */
+  color: #ffb703; /* লেখার রঙ: গোল্ডেন/হলুদ (#ffb703) */
+  text-transform: uppercase; /* সব অক্ষর বড় হাতের (Capital Letter) করবে */
+  letter-spacing: 1.5px; /* প্রতিটি অক্ষরের মাঝে ১.৫ পিক্সেল ফাঁক তৈরি করবে */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* লেখার পেছনে হালকা কালো ছায়া ফেলবে */
+}
+
+/* ৩. সাব-টাইটেল বা ঠিকানার লেখা (Header Paragraph) */
+.namaz-container header p { 
+  font-size: 18px; /* টেক্সটের সাইজ ১৮ পিক্সেল */
+  font-weight: 600; /* লেখা মাঝারি মোটা করবে */
+  color: #e2e8f0; /* টেক্সটের রঙ: হালকা অফ-হোয়াইট */
+  margin: 0 0 20px 0; /* লেখার নিচে ২০ পিক্সেল ফাঁকা জায়গা রাখবে */
+}
+
+/* ৪. ডিজিটাল ঘড়ি এবং তারিখ রাখার বক্স */
+.namaz-clock-section { 
+  margin: 20px 0; /* উপরে ও নিচে ২০ পিক্সেল ফাকা জায়গা ছাড়বে */
+  padding: 16px; /* চারপাশে ১৬ পিক্সেল জায়গা ছাড়বে */
+  background: rgba(255, 255, 255, 0.06); /* কাচের মতো হালকা স্বচ্ছ ব্যাকগ্রাউন্ড */
+  border-radius: 14px; /* কোণা ১৪ পিক্সেল গোলাকার করবে */
+  border: 1px solid rgba(255, 255, 255, 0.12); /* চারপাশে হালকা সাদা বর্ডার দেবে */
+}
+
+/* ৫. সরাসরি ডিজিটাল ঘড়ির লেখা (Digital Clock Time) */
+.namaz-digital-clock { 
+  font-size: 42px; /* ঘড়ির লেখার সাইজ (৪২ পিক্সেল) */
+  font-weight: 800; /* ঘড়ির লেখা অনেক বেশি মোটা/বোল্ড করবে */
+  color: #00f5d4; /* লেখার রঙ: উজ্জ্বল নিয়ন সায়ান / টিয়া-সবুজ (#00f5d4) */
+  text-shadow: 0 0 12px rgba(0, 245, 212, 0.4); /* লেখার চারপাশে নিয়ন গ্লো তৈরি করবে */
+}
+
+/* ৬. পরবর্তী নামাজের কাউন্টডাউন বক্স */
+.namaz-next-prayer-box {
+  background: linear-gradient(135deg, #ff7b00, #ff0054); /* অরেঞ্জ থেকে লালচে-গোলাপি ব্যাকগ্রাউন্ড */
+  color: #ffffff; /* লেখার রঙ: সাদা (#ffffff) */
+  padding: 14px; /* চারপাশে ১৪ পিক্সেল পেডিং */
+  border-radius: 12px; /* কোণা ১২ পিক্সেল গোলাকার করবে */
+  margin: 20px 0; /* উপরে-নিচে ২০ পিক্সেল ফাঁকা জায়গা রাখবে */
+  font-weight: bold; /* লেখাটি বোল্ড করবে */
+  font-size: 26px; /* টেক্সট সাইজ ২৬ পিক্সেল */
+  letter-spacing: 0.5px; /* অক্ষরের মাঝের দূরত্ব */
+  box-shadow: 0 8px 20px rgba(255, 0, 84, 0.35); /* লালচে ছায়া */
+  animation: namazPulse 2s infinite ease-in-out; /* এনিমেশন চালু রাখবে */
+}
+
+/* ৭. কাউন্টডাউন বক্সে ছোট-বড় হওয়ার এনিমেশন */
+@keyframes namazPulse {
+  0% { transform: scale(1); } /* মূল সাইজে থাকবে */
+  50% { transform: scale(1.02); } /* ২% বড় হয়ে নজর কাড়বে */
+  100% { transform: scale(1); } /* আবার আগের সাইজে ফেরত আসবে */
+}
+
+/* ৮. তারিখের সেকশন (Dates text) */
+.namaz-dates { 
+  font-size: 20px; /* তারিখের লেখার সাইজ ২০ পিক্সেল */
+  margin-bottom: 20px; /* নিচের টেবিল থেকে ২০ পিক্সেল দূরে রাখবে */
+  color: #f8fafc; /* লেখার রঙ: হালকা উজ্জ্বল সাদা (#f8fafc) */
+  font-weight: 500; /* লেখা মাঝারি সাইজের বোল্ড */
+}
+
+/* ৯. পুরো নামাজের টেবিল (Prayer Table) */
+.namaz-table {
+  width: 100%; /* টেবিলটি বক্সের পুরো ১০০% চওড়া হবে */
+  border-collapse: separate; 
+  border-spacing: 0;
+  margin-top: 15px; /* নিচ থেকে ১৫ পিক্সেল নিচে নামবে */
+  background: rgba(15, 23, 42, 0.6); /* টেবিলের পেছনের হালকা ডার্ক ব্যাকগ্রাউন্ড */
+  border-radius: 14px; /* টেবিলের কোণাগুলো ১৪ পিক্সেল গোলাকার করবে */
+  overflow: hidden; /* ভেতরের বাড়তি কোণা কেটে গোলাকার রাখবে */
+}
+
+/* ১০. টেবিলের উপরের হেডার (Table Header - নামাজ, আজান, জামাত) */
+.namaz-table th { 
+  background: rgba(255, 183, 3, 0.15); /* হালকা গোল্ডেন শেড ব্যাকগ্রাউন্ড */
+  border-bottom: 2px solid #ffb703; /* হেডারের ঠিক নিচে ২ পিক্সেল মোটা গোল্ডেন দাগ */
+  padding: 14px; /* হেডারের ভেতরের খালি জায়গা (১৪ পিক্সেল) */
+  color: #ffb703; /* লেখার রঙ: গোল্ডেন (#ffb703) */
+  font-size: 20px; /* লেখার সাইজ ২০ পিক্সেল */
+  font-weight: bold; /* লেখা মোটা করবে */
+}
+
+/* ১১. টেবিলের ভেতরের রো এবং ঘরের লেখা (Table Data) */
+.namaz-table td { 
+  padding: 14px; /* ঘরের ভেতরের উপরিভাগ ও নিচের ফাঁকা জায়গা (১৪ পিক্সেল) */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* প্রতিটি সারির মাঝে সূক্ষ্ম সাদা বর্ডার লাইন */
+  font-size: 20px; /* ফন্ট সাইজ ২০ পিক্সেল */
+  color: #ffffff; /* লেখার রঙ: সাদা (#ffffff) */
+  font-weight: 500; /* মাঝারি মোটা ফন্ট */
+}
+
+/* ১২. টেবিলের একদম শেষ সারির নিচের বর্ডার বন্ধ করা */
+.namaz-table tr:last-child td {
+  border-bottom: none; /* শেষ লাইনের নিচে যেন কোনো বাড়তি দাগ না থাকে */
+}
+
+/* ১৩. মাউস নিলে টেবিলের সারির রঙ পরিবর্তন (Hover Effect) */
+.namaz-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.05); /* মাউস রাখলে লাইনটি হালকা হাইলাইট হবে */
+}
+
+/* ১৪. পরবর্তী নামাজের সারিতে বিশেষ রঙ হাইলাইট করা */
+.namaz-table .highlight { 
+  color: #00f5d4; /* ওই লাইনের লেখা টিয়া-সবুজ/সায়ান কালার করবে */
+  font-weight: bold; /* টেক্সট বেশি মোটা দেখাবে */
+}
+
+/* ১৫. একদম নিচের ফুটনোট/ক্রেডিট টেক্সট (Footer) */
+.namaz-footer { 
+  margin-top: 25px; /* টেবিলের থেকে ২৫ পিক্সেল নিচে নামাবে */
+  font-size: 13px; /* ফন্ট সাইজ ১৩ পিক্সেল */
+  color: #94a3b8; /* লেখার রঙ: হালকা ধূসর/অ্যাশ কালার (#94a3b8) */
+  line-height: 1.6; /* এক লাইনের সাথে অন্য লাইনের মাঝে ১.৬ গুণ স্পেস রাখবে */
+}
 
     /* ===== FOOTER ===== */
     footer {
