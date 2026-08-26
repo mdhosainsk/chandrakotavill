@@ -658,7 +658,7 @@
 .namaz-dates { 
   font-size: 28px; /* তারিখের লেখার সাইজ ২০ পিক্সেল */
   margin-bottom: 20px; /* নিচের টেবিল থেকে ২০ পিক্সেল দূরে রাখবে */
-  color:#ffd700; /* লেখার রঙ: হালকা উজ্জ্বল সাদা (#f8fafc) */
+  color: yellow; /* লেখার রঙ: হালকা উজ্জ্বল সাদা (#f8fafc) */
   font-weight: 600; /* লেখা মাঝারি সাইজের বোল্ড */
 }
 
@@ -971,16 +971,16 @@
         </div>
         
         <!-- ===== FEATURED NEWS: East Bengal Wins Durand Cup ===== -->
-        <div class="news-article featured-news" onclick="openNewsModal1()">
+        <div class="news-article featured-news" onclick="openNewsModal()">
           <div class="news-badge">🔴 LIVE</div>
           <h4>ইস্টবেঙ্গল ৪-১ ব্যবধানে মোহনবাগানকে উড়িয়ে ১৭তম ডুরান্ড কাপ জিতল, রেকর্ডে সমতা</h4>
-          <div class="meta">📅 ২৪ আগস্ট ২০২৬, সন্ধ্যা ৭:৩০ বিএসটি • ✍️ মোহাম্মদ হোসেন শেখ</div>
+          <div class="meta">📅 ২৪ আগস্ট ২০২৬,  • ✍️MD HOSAIN SK</div>
           <img src="pic1.png" alt="East Bengal Durand Cup Victory" style="width:100%; max-width:100%; border-radius:12px; margin:10px 0;">
           <p class="news-summary">
             ইস্টবেঙ্গল মোহনবাগান সুপার জায়ান্টকে ৪-১ গোলে হারিয়ে তাদের ১৭তম ডুরান্ড কাপ শিরোপা জিতেছে। 
             এডমন্ড লালরিন্ডিকার প্রথমার্ধের হ্যাটট্রিকে এই ঐতিহাসিক জয়।
           </p>
-          <button class="read-more-btn" onclick="event.stopPropagation(); openNewsModal1();">
+          <button class="read-more-btn" onclick="event.stopPropagation(); openNewsModal();">
             📖 বিস্তারিত পড়ুন
           </button>
         </div>
@@ -1005,7 +1005,7 @@
           <p>A new water purification system has been installed near the main mosque, providing safe drinking water to all residents.</p>
         </div>
         <div class="news-article">
-          <h4>🏏 Chandrakota Cricket Team Wins Local Cup</h4>
+          <h4>🏏 Chandrakota Cricket Team  Local Cup</h4>
           <div class="meta">📅 10 August 2026 • by Sports Club</div>
           <img src="sport.jpg" alt="Cricket" style="width:100%; max-width:400px; border-radius:12px;">
           <p>Our village cricket team emerged victorious in the Katwa Block Inter-Village Tournament.</p>
@@ -1169,7 +1169,7 @@
 </div>
 
     
-    <div class="news-modal" id="newsModal1">
+    <div class="news-modal" id="newsModal">
       <div class="news-modal-content">
         <button class="news-modal-close" onclick="closeNewsModal()">&times;</button>
         
