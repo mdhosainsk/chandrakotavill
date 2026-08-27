@@ -220,7 +220,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: 1A1A1A;
+      background: #1A1A1A; /* কালার হ্যাশ সিলেক্টর ঠিক করা হয়েছে */
       z-index: 999;
       justify-content: center;
       align-items: center;
@@ -586,159 +586,158 @@
 
 /* ১. মূল কার্ড বা পুরো বক্সের স্টাইল */
 .namaz-container {
-  background: linear-gradient(145deg, #1b2a4a, #0f172a); /* ব্যাকগ্রাউন্ড কালার: ডার্ক ব্লু গ্র্যাডিয়েন্ট */
-  padding: 35px 25px; /* ভেতর থেকে জায়গা ছাড়বে: উপরে-নিচে 35px, ডানে-বামে 25px */
-  border-radius: 24px; /* বক্সের ৪টি কোণা ২৪ পিক্সেল গোলাকার করবে */
-  text-align: center; /* ভেতরের সব লেখা ও টেবিল মাঝখানে (Center) রাখবে */
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* বক্সের পেছনে ভাসমান ছায়া (Shadow) ফেলবে */
-  width: 90%; /* স্ক্রিনের ৯০% জায়গা নেবে */
-  max-width: 1300px; /* সর্বোচ্চ ১০০০ পিক্সেল পর্যন্ত চওড়া হবে */
-  margin: 30px auto; /* উপরে-নিচে 30px এবং ডানে-বামে নিজে থেকেই মাঝে বসবে */
-  border: 2px solid #ffb703; /* চারপাশে ২ পিক্সেল মোটা গোল্ডেন বর্ডার দেবে */
-  box-sizing: border-box; /* পেডিং ও বর্ডার যেন নির্দিষ্ট সাইজের বাইরে না যায় */
+  background: linear-gradient(145deg, #1b2a4a, #0f172a);
+  padding: 35px 25px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  width: 90%;
+  max-width: 1300px;
+  margin: 30px auto;
+  border: 2px solid #ffb703;
+  box-sizing: border-box;
 }
 
 /* ২. প্রধান শিরোনাম (Main Heading - H1) */
 .namaz-container header h1 { 
-  font-size: 44px; /* শিরোনামের লেখার আকার ৩৪ পিক্সেল */
-  margin: 0 0 10px 0; /* লেখার নিচে ১০ পিক্সেল ফাঁকা জায়গা রাখবে */
-  color: #ffb703; /* লেখার রঙ: গোল্ডেন/হলুদ (#ffb703) */
-  text-transform: uppercase; /* সব অক্ষর বড় হাতের (Capital Letter) করবে */
-  letter-spacing: 1.5px; /* প্রতিটি অক্ষরের মাঝে ১.৫ পিক্সেল ফাঁক তৈরি করবে */
-  text-shadow:1px 1px 0px #b8860b, 2px 2px 0px #996515, 3px 3px 5px rgba(0, 0, 0, 0.8); /* গ্লো এফেক্ট */
-   /* লেখার পেছনে হালকা কালো ছায়া ফেলবে */
+  font-size: 44px;
+  margin: 0 0 10px 0;
+  color: #ffb703;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-shadow:1px 1px 0px #b8860b, 2px 2px 0px #996515, 3px 3px 5px rgba(0, 0, 0, 0.8);
 }
 
-/* ৩. সাব-টাইটেল বা ঠিকানার লেখা (Header Paragraph) */
+/* ৩. সাব-টাইটেল বা ঠিকানার লেখা (Header Paragraph) - শিরোনামের ঠিক নিচে রাখার লজিক */
 .namaz-container header p { 
-  font-size: 18px; /* টেক্সটের সাইজ ১৮ পিক্সেল */
-  font-weight: 600; /* লেখা মাঝারি মোটা করবে */
-  color: #e2e8f0; /* টেক্সটের রঙ: হালকা অফ-হোয়াইট */
-  margin: 8px 0 20px 0; /* লেখার নিচে ২০ পিক্সেল ফাঁকা জায়গা রাখবে */
-  display: block; /* <--- এই লাইনটি নিশ্চিত করবে লেখাটি ঠিক নিচে নামবে */
-  clear: both;     /* <--- এই লাইনটি কোনো পাশের এলিমেন্ট থাকলে তা সরিয়ে দেবে */
+  font-size: 18px;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin: 8px 0 20px 0;
+  display: block; /* লেখাটি একাই একটি লাইন দখল করে ঠিক নিচে নামবে */
+  clear: both;     /* পাশের যেকোনো ফ্লোটিং উপাদায়ক পরিষ্কার রাখবে */
 }
 
 /* ৪. ডিজিটাল ঘড়ি এবং তারিখ রাখার বক্স */
 .namaz-clock-section { 
-  margin: 20px 0; /* উপরে ও নিচে ২০ পিক্সেল ফাকা জায়গা ছাড়বে */
-  padding: 16px; /* চারপাশে ১৬ পিক্সেল জায়গা ছাড়বে */
-  background: white; /* কাচের মতো হালকা স্বচ্ছ ব্যাকগ্রাউন্ড */
-  border-radius: 14px; /* কোণা ১৪ পিক্সেল গোলাকার করবে */
-  border: 1px solid rgba(255, 255, 255, 0.12); /* চারপাশে হালকা সাদা বর্ডার দেবে */
+  margin: 20px 0;
+  padding: 16px;
+  background: white;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* ৫. সরাসরি ডিজিটাল ঘড়ির লেখা (Digital Clock Time) */
 .namaz-digital-clock { 
-  font-size: 42px; /* ঘড়ির লেখার সাইজ (৪২ পিক্সেল) */
-  font-weight: 800; /* ঘড়ির লেখা অনেক বেশি মোটা/বোল্ড করবে */
-  color: #000; /* লেখার রঙ: উজ্জ্বল নিয়ন সায়ান / টিয়া-সবুজ (#00f5d4) */
-  text-shadow: 0 0 12px rgba(0, 245, 212, 0.4); /* লেখার চারপাশে নিয়ন গ্লো তৈরি করবে */
+  font-size: 42px;
+  font-weight: 800;
+  color: #000;
+  text-shadow: 0 0 12px rgba(0, 245, 212, 0.4);
 }
 
 /* ৬. পরবর্তী নামাজের কাউন্টডাউন বক্স */
 .namaz-next-prayer-box {
-  background: linear-gradient(135deg, #ff7b00, #ff0054); /* অরেঞ্জ থেকে লালচে-গোলাপি ব্যাকগ্রাউন্ড */
-  color: #ffffff; /* লেখার রঙ: সাদা (#ffffff) */
-  padding: 14px; /* চারপাশে ১৪ পিক্সেল পেডিং */
-  border-radius: 12px; /* কোণা ১২ পিক্সেল গোলাকার করবে */
-  margin: 20px 0; /* উপরে-নিচে ২০ পিক্সেল ফাঁকা জায়গা রাখবে */
-  font-weight: bold; /* লেখাটি বোল্ড করবে */
-  font-size: 26px; /* টেক্সট সাইজ ২৬ পিক্সেল */
-  letter-spacing: 0.5px; /* অক্ষরের মাঝের দূরত্ব */
-  box-shadow: 0 8px 20px rgba(255, 0, 84, 0.35); /* লালচে ছায়া */
-  animation: namazPulse 2s infinite ease-in-out; /* এনিমেশন চালু রাখবে */
+  background: linear-gradient(135deg, #ff7b00, #ff0054);
+  color: #ffffff;
+  padding: 14px;
+  border-radius: 12px;
+  margin: 20px 0;
+  font-weight: bold;
+  font-size: 26px;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 20px rgba(255, 0, 84, 0.35);
+  animation: namazPulse 2s infinite ease-in-out;
 }
 
 /* ৭. কাউন্টডাউন বক্সে ছোট-বড় হওয়ার এনিমেশন */
 @keyframes namazPulse {
-  0% { transform: scale(1); } /* মূল সাইজে থাকবে */
-  50% { transform: scale(1.02); } /* ২% বড় হয়ে নজর কাড়বে */
-  100% { transform: scale(1); } /* আবার আগের সাইজে ফেরত আসবে */
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
 }
 
-/* ৮. তারিখ ও দিনের নাম সেকশন (Dates & Day text) */
+/* ৮. তারিখ ও দিনের নাম সেকশন (Dates & Day text style) */
 .namaz-dates, 
-.namaz-dates * {
-  font-size: 32px !important; /* তারিখ এবং দিনের নাম দুটোকেই একসাথে ৩২ পিক্সেল বড় করবে */
-  color: #ffd700 !important;  /* দিনের নাম ও তারিখ দুটোকেই সুন্দর উজ্জ্বল সোনালী/হলুদ করবে */
-  font-weight: 700 !important; /* লেখা দুটিকে ডিপ বোল্ড ও স্পষ্ট করবে */
-  margin-bottom: 20px;
+.namaz-dates *,
+#namazDayName {
+  font-size: 32px !important; /* তারিখ ও দিনের নাম বড় ৩২ পিক্সেল করবে */
+  color: #ffd700 !important;  /* দিনের নাম ও তারিখ সোনালী/হলুদ করবে */
+  font-weight: 700 !important; /* মোটা ও ডিপ দৃশ্যমান করবে */
+  margin-bottom: 10px;
 }
+
 /* ৯. পুরো নামাজের টেবিল (Prayer Table) */
 .namaz-table {
-  width: 100%; /* টেবিলটি বক্সের পুরো ১০০% চওড়া হবে */
+  width: 100%;
   border-collapse: separate; 
   border-spacing: 0;
-  margin-top: 15px; /* নিচ থেকে ১৫ পিক্সেল নিচে নামবে */
-  background: rgba(15, 23, 42, 0.6); /* টেবিলের পেছনের হালকা ডার্ক ব্যাকগ্রাউন্ড */
-  border-radius: 14px; /* টেবিলের কোণাগুলো ১৪ পিক্সেল গোলাকার করবে */
-  overflow: hidden; /* ভেতরের বাড়তি কোণা কেটে গোলাকার রাখবে */
+  margin-top: 15px;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 14px;
+  overflow: hidden;
 }
 
 /* ১০. টেবিলের উপরের হেডার (Table Header - নামাজ, আজান, জামাত) */
 .namaz-table th { 
-  background: rgba(255, 183, 3, 0.15); /* হালকা গোল্ডেন শেড ব্যাকগ্রাউন্ড */
-  border-bottom: 2px solid #ffb703; /* হেডারের ঠিক নিচে ২ পিক্সেল মোটা গোল্ডেন দাগ */
-  padding: 14px; /* হেডারের ভেতরের খালি জায়গা (১৪ পিক্সেল) */
-  color: #ffb703; /* লেখার রঙ: গোল্ডেন (#ffb703) */
-  font-size: 20px; /* লেখার সাইজ ২০ পিক্সেল */
-  font-weight: bold; /* লেখা মোটা করবে */
+  background: rgba(255, 183, 3, 0.15);
+  border-bottom: 2px solid #ffb703;
+  padding: 14px;
+  color: #ffb703;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 /* ১১. টেবিলের ভেতরের রো এবং ঘরের লেখা (Table Data) */
 .namaz-table td { 
-  padding: 14px; /* ঘরের ভেতরের উপরিভাগ ও নিচের ফাঁকা জায়গা (১৪ পিক্সেল) */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* প্রতিটি সারির মাঝে সূক্ষ্ম সাদা বর্ডার লাইন */
-  font-size: 20px; /* ফন্ট সাইজ ২০ পিক্সেল */
-  color: #ffffff; /* লেখার রঙ: সাদা (#ffffff) */
-  font-weight: 500; /* মাঝারি মোটা ফন্ট */
+  padding: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 20px;
+  color: #ffffff;
+  font-weight: 500;
 }
 
 /* ১২. টেবিলের একদম শেষ সারির নিচের বর্ডার বন্ধ করা */
 .namaz-table tr:last-child td {
-  border-bottom: none; /* শেষ লাইনের নিচে যেন কোনো বাড়তি দাগ না থাকে */
+  border-bottom: none;
 }
 
 /* ১৩. মাউস নিলে টেবিলের সারির রঙ পরিবর্তন (Hover Effect) */
 .namaz-table tr:hover td {
-  background-color: rgba(255, 255, 255, 0.05); /* মাউস রাখলে লাইনটি হালকা হাইলাইট হবে */
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* ১৪. পরবর্তী নামাজের সারিতে বিশেষ রঙ হাইলাইট করা */
 .namaz-table .highlight { 
-  color: #00f5d4; /* ওই লাইনের লেখা টিয়া-সবুজ/সায়ান কালার করবে */
-  font-weight: bold; /* টেক্সট বেশি মোটা দেখাবে */
+  color: #00f5d4;
+  font-weight: bold;
 }
 
 /* ১৫. একদম নিচের ফুটনোট/ক্রেডিট টেক্সট (Footer) */
 .namaz-footer { 
-  margin-top: 25px; /* টেবিলের থেকে ২৫ পিক্সেল নিচে নামাবে */
-  font-size: 13px; /* ফন্ট সাইজ ১৩ পিক্সেল */
-  color: #94a3b8; /* লেখার রঙ: হালকা ধূসর/অ্যাশ কালার (#94a3b8) */
-  line-height: 1.6; /* এক লাইনের সাথে অন্য লাইনের মাঝে ১.৬ গুণ স্পেস রাখবে */
+  margin-top: 25px;
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.6;
 }
 /* ===== চলমান নোটিশ (Running News Ticker) স্টাইল ===== */
 .news-ticker-container {
-  width: 100%; /* পুরো বক্সের সমান চওড়া হবে */
-  overflow: hidden; /* টেক্সট বক্সের বাইরে গেলে তা লুকিয়ে রাখবে */
-  background: rgba(0, 0, 0, 0.4); /* পেছনের হালকা ডার্ক ব্যাকগ্রাউন্ড */
-  border: 1px solid #ffd700; /* হালকা গোল্ডেন বর্ডার */
-  border-radius: 8px; /* কোণা ৮ পিক্সেল গোলাকার করবে */
-  padding: 18px 0; /* উপরে-নিচে 18 পিক্সেল ফাঁকা জায়গা */
-  margin-bottom: 15px; /* নিচের ঘড়ির সেকশন থেকে ১৫ পিক্সেল দূরত্বে রাখবে */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* হালকা ছায়া ফেলবে */
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid #ffd700;
+  border-radius: 8px;
+  padding: 18px 0;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .news-ticker-text {
   display: inline-block;
-  white-space: nowrap; /* টেক্সট ভেঙে নিচের লাইনে যাবে না, এক লাইনে থাকবে */
-  font-size: 26px; /* লেখার ফন্ট সাইজ (বাড়াল বড় হবে, কমাল ছোট হবে) */
-  font-weight: bold; /* লেখা মোটা বা বোল্ড করবে */
-  color: #ffd700; /* লেখার রঙ: উজ্জ্বল গোল্ডেন/হলুদ (#ffd700) */
-  text-shadow: 1px 1px 0px #b8860b, 2px 2px 0px #996515, 3px 3px 5px rgba(0, 0, 0, 0.8); /* গ্লো এফেক্ট */
-  
-  /* এনিমেশন সেটআপ: বাম থেকে ডানে চলবে */
+  white-space: nowrap;
+  font-size: 26px;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 1px 1px 0px #b8860b, 2px 2px 0px #996515, 3px 3px 5px rgba(0, 0, 0, 0.8);
   animation: runTextRightToLeft 50s linear infinite; 
 }
 
@@ -747,15 +746,12 @@
   animation-play-state: paused;
 }
 
-/* বাম থেকে ডান দিকে যাওয়ার এনিমেশন লজিক */
+/* ডান থেকে বামে যাওয়ার এনিমেশন লজিক */
 @keyframes runTextRightToLeft {
-  0% {
-    transform: translateX(100%); /* স্ক্রিনের বাম পাশ থেকে বের হওয়া শুরু করবে */
-  }
-  100% {
-    transform: translateX(-100%); /* ডান পাশে গিয়ে শেষ হবে */
-  }
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }
+
     /* ===== FOOTER ===== */
     footer {
       background: #1a2c3d;
@@ -959,22 +955,22 @@
       <p>Stay updated with the latest happenings from our community.</p>
       <div class="news-grid">
 
-<!-- ===== FEATURED NEWS:TEST MATCH DAY 4 ===== -->
-        <div class="news-article featured-news" onclick="openNewsModal()">
+        <!-- ===== FEATURED NEWS: TEST MATCH DAY 4 ===== -->
+        <div class="news-article featured-news" onclick="openNewsModal1()">
           <div class="news-badge">🔴 LIVE</div>
-          <h4>কলম্বো টেস্টে ভারতের ফলো-অনে শ্রীলঙ্কা ২২৯/৬, লিড ১৬ রানে</h4>
+          <h4>কলম্বো টেস্টে ভারতের ফলো-অনে শ্রীলঙ্কা ২২২৯/৬, লিড ১৬ রানে</h4>
           <div class="meta">📅 26 আগস্ট ২০২৬, • ✍️ Md Hosain Sk</div>
           <img src="india.jpg" alt="East Bengal Durand Cup Victory" style="width:100%; max-width:100%; border-radius:12px; margin:10px 0;">
           <p class="news-summary">
             দিন ৪ শেষে শ্রীলঙ্কার লড়াইয়ে টিকে রয়েছে সোনাল দিনুশা, ভারতের বিপক্ষে ড্রয়ের আশা
           </p>
-          <button class="read-more-btn" onclick="event.stopPropagation(); openNewsModal();">
+          <button class="read-more-btn" onclick="event.stopPropagation(); openNewsModal1();">
             📖 বিস্তারিত পড়ুন
           </button>
         </div>
         
         <!-- ===== FEATURED NEWS: East Bengal Wins Durand Cup ===== -->
-        <div class="news-article featured-news" onclick="openNewsModal()">
+        <div class="news-article featured-news" onclick="openNewsModal2()">
           <div class="news-badge">🔴 LIVE</div>
           <h4>ইস্টবেঙ্গল ৪-১ ব্যবধানে মোহনবাগানকে উড়িয়ে ১৭তম ডুরান্ড কাপ জিতল, রেকর্ডে সমতা</h4>
           <div class="meta">📅 ২৪ আগস্ট ২০২৬,  • ✍️MD HOSAIN SK</div>
@@ -983,7 +979,7 @@
             ইস্টবেঙ্গল মোহনবাগান সুপার জায়ান্টকে ৪-১ গোলে হারিয়ে তাদের ১৭তম ডুরান্ড কাপ শিরোপা জিতেছে। 
             এডমন্ড লালরিন্ডিকার প্রথমার্ধের হ্যাটট্রিকে এই ঐতিহাসিক জয়।
           </p>
-          <button class="read-more-btn" onclick="event.stopPropagation(); openNewsModal();">
+          <button class="read-more-btn" onclick="event.stopPropagation(); openNewsModal2();">
             📖 বিস্তারিত পড়ুন
           </button>
         </div>
@@ -1021,7 +1017,7 @@
         <form id="commentForm">
           <input type="text" id="commentName" placeholder="Your Name" required>
           <input type="email" id="commentEmail" placeholder="Your Email" required>
-           <input type="number"id="commentNumber" placeholder=" Mobile Number" required>
+           <input type="number" id="commentNumber" placeholder=" Mobile Number" required>
             <textarea id="commentMessage" placeholder="Write your message here..." required></textarea>
           <button type="submit" class="btn-send">📧 Send Message</button>
         </form>
@@ -1119,8 +1115,8 @@
       <p style="text-align:center; margin-top:20px; color:#666; font-style:italic;"> </p>
     </div>
 
-    <!-- ===== NEWS DETAILS MODAL ===== -->
-<div class="news-modal" id="newsModal">
+    <!-- ===== NEWS DETAILS MODAL 1 ===== -->
+    <div class="news-modal" id="newsModal1">
       <div class="news-modal-content">
         <button class="news-modal-close" onclick="closeNewsModal()">&times;</button>
         
@@ -1143,7 +1139,7 @@
             কলম্বোর সিংহলিজ স্পোর্টস ক্লাবে শুভমান গিলের ভারতের বিপক্ষে দুই ম্যাচ টেস্ট সিরিজের দ্বিতীয় টেস্টের চতুর্থ দিনের খেলা 
             শেষে শ্রীলঙ্কা ২২৯/৬ রান তুলে ১৬ রানে এগিয়ে রয়েছে।
             এর আগে প্রথম ইনিংসে শ্রীলঙ্কা ২৯০ রানে অলআউট হলে ভারত ফলো-অন প্রয়োগ করে।
-          
+          </p>
           <p>
              সোনাল দিনুশার প্রতিরোধী ইনিংসই স্বাগতিকদের এই টেস্টে টিকিয়ে রেখেছে। শ্রীলঙ্কাকে আরও ৩৮ রান করতে হবে ফলো-অন এড়াতে,
             যা তাদের এই টেস্ট ড্র করার সম্ভাবনা দেবে, কারণ তখন ভারতকে আবারও ব্যাটিং করতে হবে।
@@ -1161,16 +1157,14 @@
             </ul>
           </div>
           
-  
-          
           <p style="color:#666; font-style:italic; margin-top:20px;">
             🔴 INDIA VS SRILANKA TEST MATCH</p>
         </div>
       </div>
-</div>
+    </div>
 
-    
-    <div class="news-modal" id="newsModal">
+    <!-- ===== NEWS DETAILS MODAL 2 ===== -->
+    <div class="news-modal" id="newsModal2">
       <div class="news-modal-content">
         <button class="news-modal-close" onclick="closeNewsModal()">&times;</button>
         
@@ -1219,28 +1213,29 @@
       </div>
     </div>
 
-    <!-- ===== নামাজের সূচি (আপনার দেওয়া সম্পূর্ণ কোড) ===== -->
+    <!-- ===== নামাজের সূচি ===== -->
     <div id="page-namaz" class="page hidden">
       <div class="namaz-container">
-        <header>
-          <h1> চন্দ্রকোটা মসজিদ বায়তুল মুক্কারম (জামে মসজিদ) </h1>
-          <p>চন্দ্রকোটা ** কাটোয়া ** পূর্ব বর্ধমান: ৭১৩১৫০ </p>
-        </header>
-
+        <header style="display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%;">
+  <h1 style="display: block; width: 100%; margin-bottom: 10px;">চন্দ্রকোটা মসজিদ বায়তুল মুক্কারম (জამე মসজিদ)</h1>
+  <p style="display: block; width: 100%; clear: both; margin-top: 5px;">চন্দ্রকোটা ** কাটোয়া ** পূর্ব বর্ধমান: ৭১৩১৫০</p>
+</header>
        <!-- নিউজ চ্যানেলের মতো চলমান নোটিশ সেকশন -->
-<div class="news-ticker-container">
-  <div class="news-ticker-text" id="runningText">
-    "আসসালামু আলাইকুম" (اَلسَّلَامُ عَلَيْكُمْ) আপনাদের সকলকে আমার ওয়েবসাইটে স্বাগতম জানাই।
-    প্রতিদিন খবর ও বিভিন্ন আপডেট পেতে আমার এই ওয়েবসাইটটিকে Follow করুন। 
-    ****. আপনরা নিজের ক্যারিয়ার ও ব্যবসাকে আরও প্রচার প্রসার করার জন্য Digital 
-    ভাবে নিজের Website ওয়েবসাইট তৈরি করার জন্য আজই যোগাযোগ করুন 
-    **** Ph: +91 8768693661 
-    *** Em@il: mdhosainsk@gmail.com / mdhosainsk@rediffmail.com
-    **মহম্মদ হোসাইন সেখ *** চন্দ্রকোটা *** কাটোয়া *** পূর্ব বর্ধমান ***
-  </div>
-</div>
+        <div class="news-ticker-container">
+          <div class="news-ticker-text" id="runningText">
+            "আসসালামু আলাইকুম" (اَلسَّلَامُ عَلَيْكُمْ) আপনাদের সকলকে আমার ওয়েবসাইটে স্বাগতম জানাই।
+            প্রতিদিন খবর ও বিভিন্ন আপডেট পেতে আমার এই ওয়েবসাইটটিকে Follow করুন। 
+            ****. আপনরা নিজের ক্যারিয়ার ও ব্যবসাকে আরও প্রচার প্রসার করার জন্য Digital 
+            ভাবে নিজের Website ওয়েবসাইট তৈরি করার জন্য আজই যোগাযোগ করুন 
+            **** Ph: +91 8768693661 
+            *** Em@il: mdhosainsk@gmail.com / mdhosainsk@rediffmail.com
+            **মহম্মদ হোসাইন সেখ *** চন্দ্রকোটা *** কাটোয়া *** পূর্ব বর্ধমান ***
+          </div>
+        </div>
+
         <div class="namaz-clock-section">
           <div class="namaz-digital-clock" id="namazClock">00:00:00 AM</div>
+          <!-- দিনের নাম দেখানোর জন্য নতুন স্প্যান বা ডিভ -->
           <div id="namazDayName">লোড হচ্ছে...</div>
           <div class="namaz-dates">
             <span id="namazGregorian"></span> | <span id="namazHijri"></span>
@@ -1261,7 +1256,7 @@
             </tr>
           </thead>
           <tbody id="namazPrayerTable">
-            <!-- জাভাস্ক্রিপ্ট দিয়ে ডাটা আসবে -->
+            <!-- জাভাস্ক্রিপ্ট দিয়ে ডাইনামিকভাবে জোহর/জুম্মা ডাটাসহ বসবে -->
           </tbody>
         </table>
 
@@ -1390,19 +1385,26 @@
         if (e.key === 'Escape') closeModal();
       });
 
-      // ===== NEWS MODAL =====
-      window.openNewsModal = function() {
-        document.getElementById('newsModal').classList.add('show');
+      // ===== NEWS MODALS (প্রথম এবং দ্বিতীয় খবরের জন্য আলাদা ফাংশন) =====
+      window.openNewsModal1 = function() {
+        document.getElementById('newsModal1').classList.add('show');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.openNewsModal2 = function() {
+        document.getElementById('newsModal2').classList.add('show');
         document.body.style.overflow = 'hidden';
       };
 
       window.closeNewsModal = function() {
-        document.getElementById('newsModal').classList.remove('show');
+        document.querySelectorAll('.news-modal').forEach(m => m.classList.remove('show'));
         document.body.style.overflow = '';
       };
 
-      document.getElementById('newsModal')?.addEventListener('click', function(e) {
-        if (e.target === this) closeNewsModal();
+      document.querySelectorAll('.news-modal').forEach(modal => {
+        modal.addEventListener('click', function(e) {
+          if (e.target === this) closeNewsModal();
+        });
       });
 
       document.addEventListener('keydown', function(e) {
@@ -1447,50 +1449,75 @@
         });
       }
 
-      // ===== নামাজের সূচি (আপনার দেওয়া সম্পূর্ণ JavaScript) =====
-      const namazPrayerTimes = [
-        { name: 'ফজর (Fajr)', azan: '04:00 AM', namaz: '04:40 AM', sortTime: '04:40' },
-        { name: 'জোহর (juhr)', azan: '01:00 PM', namaz: '01:30 PM', sortTime: '13:30' },
-        { name: 'আসর (Asr)', azan: '04:15 PM', namaz: '04:30 PM', sortTime: '16:30' },
-        { name: 'মাগরিব (Maghrib)', azan: '06:06 PM', namaz: '06:10 PM', sortTime: '18:10' },
-        { name: 'ইশা (Isha)', azan: '07:50 PM', namaz: '08:10 PM', sortTime: '20:10' }
-      ];
+      // ===== 🕌 নামাজের সূচি ও জুম্মা লজিক (JavaScript Section) 🕌 =====
+      
+      // সময়কে মিনিটে বের করার হেল্পার ফাংশন
+      function parseTimeToMinutes(timeStr) {
+        const [time, modifier] = timeStr.split(' ');
+        let [hours, minutes] = time.split(':').map(Number);
+        if (modifier === 'PM' && hours < 12) hours += 12;
+        if (modifier === 'AM' && hours === 12) hours = 0;
+        return hours * 60 + minutes;
+      }
 
       function updateNamazDashboard() {
         const now = new Date();
-        
-        // ঘড়ি আপডেট
+        const dayOfWeek = now.getDay(); // ০ = রবিবার, ৫ = শুক্রবার
+        const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+        // ১. ঘড়ি এবং দিনের নাম আপডেট
         document.getElementById('namazClock').innerText = now.toLocaleTimeString('en-US', { 
           hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true 
         });
         document.getElementById('namazDayName').innerText = now.toLocaleDateString('bn-IN', { weekday: 'long' });
         document.getElementById('namazGregorian').innerText = now.toLocaleDateString('bn-IN');
 
-        // টেবিল ডাটা রেন্ডার
+        // ২. ফজরের জামাত (০৪:৪০ AM) সময় বের করা
+        const fajrJamatMinutes = parseTimeToMinutes('04:40 AM');
+
+        // ৩. শুক্রবার এবং ফজরের জামাতের পর কি না তা যাচাই করার শর্ত
+        const isFriday = (dayOfWeek === 5);
+        const isAfterFajrJamatOnFriday = isFriday && (currentMinutes >= fajrJamatMinutes);
+
+        // ৪. ডাইনামিকভাবে নামাজের সূচির ডাটা সাজানো (শুক্রবার ফজরের পর জুম্মা দেখাবে)
+        const currentPrayerList = [
+          { name: 'ফজর (Fajr)', azan: '04:00 AM', namaz: '04:40 AM', sortTime: '04:40' },
+          
+          /* জোহর বা জুম্মার লজিক্যাল কন্ডিশন */
+          isAfterFajrJamatOnFriday 
+            ? { name: 'জুম্মা (Jummah)', azan: '12:05 PM', namaz: '12:45 PM', sortTime: '12:45' } 
+            : { name: 'জোহর (Juhr)', azan: '01:00 PM', namaz: '01:30 PM', sortTime: '13:30' },
+            
+          { name: 'আসর (Asr)', azan: '04:15 PM', namaz: '04:30 PM', sortTime: '16:30' },
+          { name: 'মাগরিব (Maghrib)', azan: '06:06 PM', namaz: '06:10 PM', sortTime: '18:10' },
+          { name: 'ইশা (Isha)', azan: '07:50 PM', namaz: '08:10 PM', sortTime: '20:10' }
+        ];
+
+        // ৫. টেবিলে তথ্যগুলো বসানো
         let tableHTML = "";
-        namazPrayerTimes.forEach(p => {
+        currentPrayerList.forEach(p => {
           tableHTML += `<tr><td>${p.name}</td><td class="highlight">${p.azan}</td><td>${p.namaz}</td></tr>`;
         });
         document.getElementById('namazPrayerTable').innerHTML = tableHTML;
 
-        // পরবর্তী নামাজের কাউন্টডাউন লজিক
-        const currentTimeInMinutes = now.getHours() * 60 + now.getMinutes();
+        // ৬. পরবর্তী নামাজের কাউন্টডাউন হিসাব
         let nextPrayer = null;
 
-        for (let p of namazPrayerTimes) {
+        for (let p of currentPrayerList) {
           let [h, m] = p.sortTime.split(':');
           let pTimeInMinutes = parseInt(h) * 60 + parseInt(m);
           
-          if (pTimeInMinutes > currentTimeInMinutes) {
-            nextPrayer = { ...p, remaining: pTimeInMinutes - currentTimeInMinutes };
+          if (pTimeInMinutes > currentMinutes) {
+            nextPrayer = { ...p, remaining: pTimeInMinutes - currentMinutes };
             break;
           }
         }
 
+        // এশার নামাজ পার হয়ে গেলে পরবর্তী দিনের ফজরের সময় ধরা
         if (!nextPrayer) {
-          let [h, m] = namazPrayerTimes[0].sortTime.split(':');
+          let [h, m] = currentPrayerList[0].sortTime.split(':');
           let fTime = parseInt(h) * 60 + parseInt(m);
-          nextPrayer = { ...namazPrayerTimes[0], remaining: (1440 - currentTimeInMinutes) + fTime };
+          nextPrayer = { ...currentPrayerList[0], remaining: (1440 - currentMinutes) + fTime };
         }
 
         let hours = Math.floor(nextPrayer.remaining / 60);
