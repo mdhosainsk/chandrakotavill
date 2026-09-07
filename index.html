@@ -1510,44 +1510,45 @@ async function fetchMaghribTime() {
     const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Katwa&country=India&method=1');
     const data = await response.json();
     if (data && data.data && data.data.timings) {
-      let rawMaghrib = data.data.timings.Maghrib; 
-      let [hours, minutes] = rawMaghrib.split(':').map(Number);
-      let period = hours >= 12 ? 'PM' : 'AM';
-      let formattedHours = hours % 12 || 12;
-      let displayHours = formattedHours < 10 ? '0' + formattedHours : formattedHours;
-      let displayMinutes = minutes < 10 ? '0' + minutes : minutes;
+      let rawSunset = data.data.timings.Sunset; // সূর্যাস্তের সময়
+      let [hours, minutes] = rawSunset.split(':').map(Number);
 
-      let maghribAzan = `${displayHours}:${displayMinutes} ${period}`;
-      
-      let jamatMinutes = minutes + 5;
-      let jamatHours = hours;
-      if (jamatMinutes >= 60) {
-        jamatMinutes -= 60;
-        jamatHours += 1;
-      }
+      // ১. আজানের সময়: সূর্যাস্তের ঠিক ৫ মিনিট পর
+      let azanTotalMinutes = hours * 60 + minutes + 5;
+      let azanHours = Math.floor(azanTotalMinutes / 60);
+      let azanMins = azanTotalMinutes % 60;
+
+      let azanPeriod = azanHours >= 12 ? 'PM' : 'AM';
+      let formattedAzanHours = azanHours % 12 || 12;
+      let displayAzanHours = formattedAzanHours < 10 ? '0' + formattedAzanHours : formattedAzanHours;
+      let displayAzanMins = azanMins < 10 ? '0' + azanMins : azanMins;
+
+      let maghribAzan = `${displayAzanHours}:${displayAzanMins} ${azanPeriod}`;
+
+      // ২. জামাতের সময়: আজানের ৩ মিনিট পর (সূর্যাস্তের ৮ মিনিট পর)
+      let jamatTotalMinutes = azanTotalMinutes + 3;
+      let jamatHours = Math.floor(jamatTotalMinutes / 60);
+      let jamatMins = jamatTotalMinutes % 60;
+
       let jamatPeriod = jamatHours >= 12 ? 'PM' : 'AM';
       let formattedJamatHours = jamatHours % 12 || 12;
       let displayJamatHours = formattedJamatHours < 10 ? '0' + formattedJamatHours : formattedJamatHours;
-      let displayJamatMinutes = jamatMinutes < 10 ? '0' + jamatMinutes : jamatMinutes;
+      let displayJamatMins = jamatMins < 10 ? '0' + jamatMins : jamatMins;
 
-      let maghribJamat = `${displayJamatHours}:${displayJamatMinutes} ${jamatPeriod}`;
+      let maghribJamat = `${displayJamatHours}:${displayJamatMins} ${jamatPeriod}`;
 
+      // ৩. মাগরিবের অবজেক্ট খুঁজে আপডেট করা
       const maghribObj = currentPrayerList.find(p => p.name.includes('মাগরিব'));
       if (maghribObj) {
         maghribObj.azan = maghribAzan;
-      maghribObj.namaz = maghribJamat;
-      maghribObj.sortTime = rawMaghrib;
+        maghribObj.namaz = maghribJamat;
+        maghribObj.sortTime = `${String(azanHours).padStart(2, '0')}:${String(azanMins).padStart(2, '0')}`;
 
-      // মাগরিবের সময় আপডেট হওয়ার পর ড্যাশবোর্ড রিফ্রেশ করার জন্য
-      if (typeof updateNamazDashboard === 'function') {
-        updateNamazDashboard();
+        if (typeof updateNamazDashboard === 'function') {
+          updateNamazDashboard();
+        }
       }
-      }
-    }
-  } catch (error) {
-    console.error("Maghrib time update failed:", error);
-  }
-}
+ 
         // ৫. টেবিলে তথ্যগুলো বসানো
         let tableHTML = "";
         currentPrayerList.forEach(p => {
