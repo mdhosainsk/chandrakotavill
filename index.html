@@ -1505,58 +1505,84 @@
           { name: 'মাগরিব (Maghrib)', azan: '05:53 PM', namaz: '05:56 PM', sortTime: '17:56' },
           { name: 'ইশা (Isha)', azan: '07:50 PM', namaz: '08:10 PM', sortTime: '20:10' }
         ];
-async function fetchMaghribTime() {
-  try {
-    const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Katwa&country=India&method=1');
-    const data = await response.json();
-    if (data && data.data && data.data.timings) {
-      let rawSunset = data.data.timings.Sunset; // সূর্যাস্তের সময়
-      let [hours, minutes] = rawSunset.split(':').map(Number);
+let maghribData = { azan: '05:53 PM', namaz: '05:56 PM', sortTime: '17:56' };
 
-      // ১. আজানের সময়: সূর্যাস্তের ঠিক ৫ মিনিট পর
-      let azanTotalMinutes = hours * 60 + minutes + 5;
-      let azanHours = Math.floor(azanTotalMinutes / 60);
-      let azanMins = azanTotalMinutes % 60;
+      function parseTimeToMinutes(timeStr) {
+        const [time, modifier] = timeStr.split(' ');
+        let [hours, minutes] = time.split(':').map(Number);
+        if (modifier === 'PM' && hours < 12) hours += 12;
+        if (modifier === 'AM' && hours === 12) hours = 0;
+        return hours * 60 + minutes;
+      }
 
-      let azanPeriod = azanHours >= 12 ? 'PM' : 'AM';
-      let formattedAzanHours = azanHours % 12 || 12;
-      let displayAzanHours = formattedAzanHours < 10 ? '0' + formattedAzanHours : formattedAzanHours;
-      let displayAzanMins = azanMins < 10 ? '0' + azanMins : azanMins;
+      async function fetchMaghribTime() {
+        try {
+          const response = await fetch('https://api.aladhan.com/v1/timingsByCity?city=Katwa&country=India&method=1');
+          const data = await response.json();
+          if (data && data.data && data.data.timings) {
+            let rawSunset = data.data.timings.Sunset;
+            let [hours, minutes] = rawSunset.split(':').map(Number);
 
-      let maghribAzan = `${displayAzanHours}:${displayAzanMins} ${azanPeriod}`;
+            // আজান: সূর্যাস্তের ৫ মিনিট পর
+            let azanTotalMinutes = hours * 60 + minutes + 5;
+            let azanHours = Math.floor(azanTotalMinutes / 60);
+            let azanMins = azanTotalMinutes % 60;
+            let azanPeriod = azanHours >= 12 ? 'PM' : 'AM';
+            let formattedAzanHours = azanHours % 12 || 12;
+            let displayAzanHours = formattedAzanHours < 10 ? '0' + formattedAzanHours : formattedAzanHours;
+            let displayAzanMins = azanMins < 10 ? '0' + azanMins : azanMins;
 
-      // ২. জামাতের সময়: আজানের ৩ মিনিট পর (সূর্যাস্তের ৮ মিনিট পর)
-      let jamatTotalMinutes = azanTotalMinutes + 3;
-      let jamatHours = Math.floor(jamatTotalMinutes / 60);
-      let jamatMins = jamatTotalMinutes % 60;
+            // জামাত: আজানের ৩ মিনিট পর
+            let jamatTotalMinutes = azanTotalMinutes + 3;
+            let jamatHours = Math.floor(jamatTotalMinutes / 60);
+            let jamatMins = jamatTotalMinutes % 60;
+            let jamatPeriod = jamatHours >= 12 ? 'PM' : 'AM';
+            let formattedJamatHours = jamatHours % 12 || 12;
+            let displayJamatHours = formattedJamatHours < 10 ? '0' + formattedJamatHours : formattedJamatHours;
+            let displayJamatMins = jamatMins < 10 ? '0' + jamatMins : jamatMins;
 
-      let jamatPeriod = jamatHours >= 12 ? 'PM' : 'AM';
-      let formattedJamatHours = jamatHours % 12 || 12;
-      let displayJamatHours = formattedJamatHours < 10 ? '0' + formattedJamatHours : formattedJamatHours;
-      let displayJamatMins = jamatMins < 10 ? '0' + jamatMins : jamatMins;
+            maghribData.azan = `${displayAzanHours}:${displayAzanMins} ${azanPeriod}`;
+            maghribData.namaz = `${displayJamatHours}:${displayJamatMins} ${jamatPeriod}`;
+            maghribData.sortTime = `${String(azanHours).padStart(2, '0')}:${String(azanMins).padStart(2, '0')}`;
 
-      let maghribJamat = `${displayJamatHours}:${displayJamatMins} ${jamatPeriod}`;
-
-      // ৩. মাগরিবের অবজেক্ট খুঁজে আপডেট করা
-      const maghribObj = currentPrayerList.find(p => p.name.includes('মাগরিব'));
-      if (maghribObj) {
-        maghribObj.azan = maghribAzan;
-        maghribObj.namaz = maghribJamat;
-        maghribObj.sortTime = `${String(azanHours).padStart(2, '0')}:${String(azanMins).padStart(2, '0')}`;
-
-        if (typeof updateNamazDashboard === 'function') {
-          updateNamazDashboard();
+            updateNamazDashboard();
+          }
+        } catch (error) {
+          console.error("Maghrib time update failed:", error);
         }
       }
- 
-        // ৫. টেবিলে তথ্যগুলো বসানো
+
+      function updateNamazDashboard() {
+        const now = new Date();
+        const dayOfWeek = now.getDay();
+        const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+        document.getElementById('namazClock').innerText = now.toLocaleTimeString('en-US', { 
+          hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true 
+        });
+        document.getElementById('namazDayName').innerText = now.toLocaleDateString('bn-IN', { weekday: 'long' });
+        document.getElementById('namazGregorian').innerText = now.toLocaleDateString('bn-IN');
+
+        const fajrJamatMinutes = parseTimeToMinutes('04:40 AM');
+        const isFriday = (dayOfWeek === 5);
+        const isAfterFajrJamatOnFriday = isFriday && (currentMinutes >= fajrJamatMinutes);
+
+        const currentPrayerList = [
+          { name: 'ফজর (Fajr)', azan: '04:15 AM', namaz: '04:45 AM', sortTime: '04:45' },
+          isAfterFajrJamatOnFriday 
+            ? { name: 'জুম্মা (Jummah)', azan: '12:05 PM', namaz: '12:45 PM', sortTime: '12:45' } 
+            : { name: 'জোহর (Juhr)', azan: '01:00 PM', namaz: '01:30 PM', sortTime: '13:30' },
+          { name: 'আসর (Asr)', azan: '04:15 PM', namaz: '04:30 PM', sortTime: '16:30' },
+          { name: 'মাগরিব (Maghrib)', azan: maghribData.azan, namaz: maghribData.namaz, sortTime: maghribData.sortTime },
+          { name: 'ইশা (Isha)', azan: '07:50 PM', namaz: '08:10 PM', sortTime: '20:10' }
+        ];
+
         let tableHTML = "";
         currentPrayerList.forEach(p => {
           tableHTML += `<tr><td>${p.name}</td><td class="highlight">${p.azan}</td><td>${p.namaz}</td></tr>`;
         });
         document.getElementById('namazPrayerTable').innerHTML = tableHTML;
 
-        // ৬. পরবর্তী নামাজের কাউন্টডাউন হিসাব
         let nextPrayer = null;
 
         for (let p of currentPrayerList) {
@@ -1569,7 +1595,6 @@ async function fetchMaghribTime() {
           }
         }
 
-        // এশার নামাজ পার হয়ে গেলে পরবর্তী দিনের ফজরের সময় ধরা
         if (!nextPrayer) {
           let [h, m] = currentPrayerList[0].sortTime.split(':');
           let fTime = parseInt(h) * 60 + parseInt(m);
@@ -1584,7 +1609,6 @@ async function fetchMaghribTime() {
           `পরবর্তী নামাজ: ${nextPrayer.name}<br><small>বাকি আছে: ${timeString}</small>`;
       }
 
-      // হিজরি তারিখের জন্য API কল
       async function getNamazHijri() {
         try {
           const res = await fetch('https://api.aladhan.com/v1/gToH');
@@ -1600,6 +1624,7 @@ async function fetchMaghribTime() {
 
       setInterval(updateNamazDashboard, 1000);
       updateNamazDashboard();
+      fetchMaghribTime();
       getNamazHijri();
       
     })();
