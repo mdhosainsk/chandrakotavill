@@ -1387,7 +1387,7 @@
             let rawSunset = data.data.timings.Sunset;
             let [hours, minutes] = rawSunset.split(':').map(Number);
 
-            let azanTotalMinutes = hours * 60 + minutes + 5;
+            let azanTotalMinutes = hours * 60 + minutes + 6;
             let azanHours = Math.floor(azanTotalMinutes / 60);
             let azanMins = azanTotalMinutes % 60;
 
